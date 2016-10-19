@@ -1,0 +1,249 @@
+# MTK project .rc configure
+
+import init.mt6752.usb.rc
+
+on init
+    mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
+    mkdir /storage/usbotg 0700 root root
+
+on post-fs-data
+
+#
+# Connectivity related device nodes & configuration (begin)
+#
+
+#/dev/ttyMT2 for Connectivity BT/FM/GPS usage
+    chmod 0660 /dev/ttyMT2
+    chown system system /dev/ttyMT2
+
+
+# STP, WMT, GPS, FM and BT Driver
+#   insmod /system/lib/modules/mtk_hif_sdio.ko
+#   insmod /system/lib/modules/mtk_stp_wmt.ko
+#   insmod /system/lib/modules/mtk_stp_uart.ko
+#   insmod /system/lib/modules/mtk_stp_gps.ko
+#   insmod /system/lib/modules/mtk_stp_bt.ko
+#   insmod /system/lib/modules/mtk_fm_drv.ko
+#   insmod /system/lib/modules/mtk_wmt_wifi.ko
+
+
+# Create char device file for WMT, GPS, BT, FM, WIFI
+#    mknod /dev/stpwmt c 190 0;
+#    mknod /dev/stpgps c 191 0;
+#    mknod /dev/stpbt  c 192 0;
+
+#    chmod 0660 /dev/stpwmt
+#    chown system system /dev/stpwmt
+
+#    chmod 0660 /dev/wmtdetect
+#    chown system system /dev/wmtdetect
+
+    mknod /dev/wmtWifi c 153 0
+    chmod 0660 /dev/wmtWifi
+    chown system system /dev/wmtWifi
+
+#Camera
+    chmod 0660 /dev/GAF001AF
+    chown system camera /dev/GAF001AF
+   
+    chmod 0660 /dev/DW9714AF
+    chown system camera /dev/DW9714AF
+
+		chmod 0660 /dev/LC898122AF
+    chown system camera /dev/LC898122AF
+    
+    chmod 0660 /dev/AD5820AF
+    chown system camera /dev/AD5820AF
+    
+	chmod 0660 /dev/BU64745GWZAF
+    chown system camera /dev/BU64745GWZAF
+
+#SMB
+    chown system system /proc/smb/ScreenComm
+    chmod 0660 /proc/smb/ScreenComm
+ 
+# BT
+#    chmod 0660 /dev/stpbt
+#    chown bluetooth radio /dev/stpbt
+
+# GPS
+#    chown gps gps /dev/stpgps
+    chown gps gps /sys/class/gpsdrv/gps/pwrctl
+    chown gps gps /sys/class/gpsdrv/gps/suspend
+    chown gps gps /sys/class/gpsdrv/gps/state
+    chown gps gps /sys/class/gpsdrv/gps/pwrsave
+    chown gps gps /sys/class/gpsdrv/gps/status
+#    chmod 0660 /dev/stpgps
+
+# WiFi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/wpa_supplicant 0770 wifi wifi
+    chown wifi wifi /data/misc/wifi
+
+ # Sensor
+ #lenovo-sw molg1 add 20140912 begin
+    chmod 0664 /sys/class/misc/m_mag_misc/maggsactive
+    chmod 0664 /sys/class/misc/m_mag_misc/maggsdelay
+    chmod 0664 /sys/class/misc/m_mag_misc/maggsbatch
+    chmod 0664 /sys/class/misc/m_mag_misc/maggsflush
+    chmod 0664 /sys/class/misc/m_mag_misc/maglaactive
+    chmod 0664 /sys/class/misc/m_mag_misc/magladelay
+    chmod 0664 /sys/class/misc/m_mag_misc/maglabatch
+    chmod 0664 /sys/class/misc/m_mag_misc/maglaflush
+    chmod 0664 /sys/class/misc/m_mag_misc/maggractive
+    chmod 0664 /sys/class/misc/m_mag_misc/maggrdelay
+    chmod 0664 /sys/class/misc/m_mag_misc/maggrbatch
+    chmod 0664 /sys/class/misc/m_mag_misc/maggrflush
+    chmod 0664 /sys/class/misc/m_mag_misc/magrvactive
+    chmod 0664 /sys/class/misc/m_mag_misc/magrvdelay
+    chmod 0664 /sys/class/misc/m_mag_misc/magrvbatch
+    chmod 0664 /sys/class/misc/m_mag_misc/magrvflush
+    chmod 0664 /sys/class/misc/m_mag_misc/magdevnum
+    chown system system /sys/class/misc/m_mag_misc/maggsactive
+    chown system system /sys/class/misc/m_mag_misc/maggsdelay
+    chown system system /sys/class/misc/m_mag_misc/maggsbatch
+    chown system system /sys/class/misc/m_mag_misc/maggsflush
+    chown system system /sys/class/misc/m_mag_misc/maglaactive
+    chown system system /sys/class/misc/m_mag_misc/magladelay
+    chown system system /sys/class/misc/m_mag_misc/maglabatch
+    chown system system /sys/class/misc/m_mag_misc/maglaflush
+    chown system system /sys/class/misc/m_mag_misc/maggractive
+    chown system system /sys/class/misc/m_mag_misc/maggrdelay
+    chown system system /sys/class/misc/m_mag_misc/maggrbatch
+    chown system system /sys/class/misc/m_mag_misc/maggrflush
+    chown system system /sys/class/misc/m_mag_misc/magrvactive
+    chown system system /sys/class/misc/m_mag_misc/magrvdelay
+    chown system system /sys/class/misc/m_mag_misc/magrvbatch
+    chown system system /sys/class/misc/m_mag_misc/magrvflush
+    chown system system /sys/class/misc/m_mag_misc/magdevnum
+
+    chmod 0644 /sys/class/misc/m_alsps_misc/alsdevnum
+    chown system system /sys/class/misc/m_alsps_misc/alsdevnum
+    chmod 0644 /sys/class/misc/m_alsps_misc/psdevnum
+    chown system system /sys/class/misc/m_alsps_misc/psdevnum
+    chmod 0644 /sys/class/misc/m_alsps_misc/accdevnum
+    chown system system /sys/class/misc/m_alsps_misc/accdevnum
+
+#lenovo-sw molg1 add 20140912 end
+#lenovo-sw molg1 add 20141031 begin
+    chmod 0664 /sys/bus/platform/drivers/als_ps/ps_cali_close
+    chmod 0664 /sys/bus/platform/drivers/als_ps/ps_cali_far
+    chown system system /sys/bus/platform/drivers/als_ps/ps_cali_close
+    chown system system /sys/bus/platform/drivers/als_ps/ps_cali_far
+#lenovo-sw molg1 add 20141031 end
+
+#lenovo-sw limm3 add begin
+chmod 0664  /sys/devices/platform/battery/power_supply/battery/charging_led_flag
+chown system system /sys/devices/platform/battery/power_supply/battery/charging_led_flag
+restorecon /sys/devices/platform/battery/power_supply/battery/charging_led_flag
+#lenovo-sw limm3 add end
+
+#lenovo-sw wengjun1 add 20141105 begin
+    chown system system /sys/board_properties/tpd_suspend_status
+#lenovo-sw wengjun1 add 20141105 end
+#piezo cover detect add by lily8@lenovo.com
+    chown 0664 /sys/class/switch/piezo/state
+#Define device for ATCID
+    chmod 660 /dev/ttyGS0 
+    chown system /dev/ttyGS0 
+    chmod 660 /dev/ttyGS1 
+    chown system /dev/ttyGS1
+
+#Disable for one Single loader
+# Load WiFi Driver
+#   insmod /system/lib/modules/wlan_mt.ko
+
+# Char device for BT 3.0 HS
+    mknod /dev/ampc0 c 151 0
+    chown bluetooth bluetooth /dev/ampc0
+    chmod 0660 /dev/ampc0
+
+#
+# Connectivity related device nodes & configuration (end)
+#
+
+
+on init
+    # Refer to http://source.android.com/devices/tech/storage/index.html
+    # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
+    #           Context.getExternalFilesDirs(), Context.getExternalCacheDirs(), and Context.getObbDirs().
+    #           External storage devices surfaced through these APIs must be a semi-permanent part of the device (such as an SD card slot in a battery compartment).
+    #           Developers expect data stored in these locations to be available over long periods of time."
+    # Therefore, if the target doesn't support sd hot-plugging (Ex: the SD card slot in a battery compartment), we need to export SECONDARY_STORAGE in 'boot' section
+    #
+    # export SECONDARY_STORAGE /storage/sdcard1
+
+service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbotg /storage/usbotg
+    class late_start
+    disabled
+
+#
+# Connectivity related services (Begin)
+#
+
+service atci_service /system/bin/atci_service
+	class core
+	socket atci-service stream 660 radio system 
+	socket atci-serv-fw stream 660 radio system 
+	user root 
+        disabled
+	group radio system
+                   
+service atcid-daemon-u /system/bin/atcid
+	user system
+	group radio system media
+	disabled
+	oneshot
+
+service atcid-daemon-e /system/bin/atcid
+	user root
+	group radio system
+	disabled
+	oneshot
+
+on early_property:ro.build.type=eng
+start atci_service
+start atcid-daemon-e
+
+#lenovo-sw,lily8,2015-3-28,add for sisley2 apt test begin
+on property:ro.build.type=user
+start atci_service
+start atcid-daemon-e
+start audio-daemon
+#lenovo-sw,lily8,2015-3-28,add for sisley2 apt test end
+
+on property:persist.service.atci.autostart=1
+start atci_service
+start atcid-daemon-e
+start audio-daemon
+
+service audio-daemon /system/bin/audiocmdservice_atci
+    class main
+    socket atci-audio stream 660 media system
+    user media
+    group nvram media system sdcard_rw
+    disabled
+    oneshot
+
+service wmtLoader /system/bin/wmt_loader
+    user root
+    group root
+    class core
+    oneshot
+
+service conn_launcher /system/bin/6620_launcher -p /system/etc/firmware/
+    user system
+    group system
+    class core
+
+service nvram_proximity /system/bin/nvram_proximity
+    user root
+    group system
+    class core
+    oneshot
+
+#
+# Connectivity related services (End)
+#
+

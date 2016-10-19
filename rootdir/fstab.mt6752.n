@@ -1,0 +1,27 @@
+# device		mount_point	fs	flag	option	
+/dev/block/mmcblk0p17	/system		ext4	ro	wait
+/dev/block/mmcblk0p19	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,discard	wait,check,resize,encryptable=/dev/block/mmcblk0p15
+/dev/block/mmcblk0p18	/cache		ext4	noatime,nosuid,nodev,noauto_da_alloc,discard wait,check
+/dev/block/mmcblk0p3	/protect_f	ext4	noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc	wait,check
+/dev/block/mmcblk0p4	/protect_s	ext4	noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc	wait,check
+
+# external storage
+/devices/mtk-msdc.0/11240000.MSDC1*	auto	auto	defaults voldmanaged=sdcard1:auto,noemulatedsd,encryptable=userdata
+/devices/platform/mt_usb*		auto	vfat	defaults voldmanaged=usbotg:auto
+
+# other partitions
+/dev/block/mmcblk0p16	/persistent	emmc defaults defaults
+
+/dev/block/mmcblk0p2	/nvram		emmc defaults defaults
+/dev/block/mmcblk0p1	/proinfo	emmc defaults defaults
+/dev/block/mmcblk0p6	/bootloader	emmc defaults defaults
+/dev/block/mmcblk0p10	/misc		emmc defaults defaults
+/dev/block/mmcblk0p7	/boot		emmc defaults defaults
+/dev/block/mmcblk0p8	/recovery	emmc defaults defaults
+/dev/block/mmcblk0p11	/logo		emmc defaults defaults
+/dev/block/mmcblk0p12	/expdb		emmc defaults defaults
+/dev/block/mmcblk0p9	/secro 		emmc defaults defaults
+/dev/block/mmcblk0p5	/seccfg		emmc defaults defaults
+
+/dev/block/mmcblk0p13	/tee1		emmc defaults defaults
+/dev/block/mmcblk0p14	/tee2		emmc defaults defaults

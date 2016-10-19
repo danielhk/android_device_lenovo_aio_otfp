@@ -1,0 +1,16 @@
+# mount_point	fstype			device				flags
+#
+/boot		emmc	/dev/block/platform/mtk-msdc.0/by-name/boot	flags=display="boot";backup=1
+/system		ext4	/dev/block/platform/mtk-msdc.0/by-name/system
+/cache		ext4	/dev/block/platform/mtk-msdc.0/by-name/cache
+/data		ext4	/dev/block/platform/mtk-msdc.0/by-name/userdata
+/nvram		emmc	/dev/block/platform/mtk-msdc.0/by-name/nvram	flags=display="nvram";backup=1;flashimg=1
+/recovery	emmc	/dev/block/platform/mtk-msdc.0/by-name/recovery	flags=display="recovery";backup=1
+/lk		emmc	/dev/block/platform/mtk-msdc.0/by-name/lk	flags=display="uboot";backup=1;flashimg=1
+/logo		emmc	/dev/block/platform/mtk-msdc.0/by-name/logo	flags=display="logo";backup=1;flashimg=1
+/proinfo	emmc	/dev/block/platform/mtk-msdc.0/by-name/proinfo	flags=display="pro_and_prot";backup=1;flashimg=1
+/protect_f	ext4	/dev/block/platform/mtk-msdc.0/by-name/protect1	flags=backup=1;subpartitionof=/proinfo
+/protect_s	ext4	/dev/block/platform/mtk-msdc.0/by-name/protect2	flags=backup=1;subpartitionof=/proinfo
+
+/external_sd	auto	/dev/block/mmcblk1p1	/dev/block/mmcblk1	flags=display="external microSD";storage;wipeingui;removable;backup=0
+/usbotg		auto    /dev/block/sda1		/dev/block/sda		flags=display="Usb-Otg";storage;wipeingui;removable;backup=0

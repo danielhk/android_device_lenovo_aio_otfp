@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <!-- configuration for cancel mms -->
+    <bool name="config_mms_cancelable">true</bool>
+
+    <!-- configuration for showing smsc pref -->
+    <bool name="config_show_smsc_pref">true</bool>
+
+    <!-- configuration for sms priority -->
+    <bool name="support_sms_priority">true</bool>
+
+    <bool name="enable_filter_threads_by_sim">true</bool>
+
+</resources>
+ 

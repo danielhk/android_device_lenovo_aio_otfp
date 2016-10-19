@@ -1,0 +1,88 @@
+# ==============================================
+# Policy File of /system/binvtservice Executable File
+
+# ==============================================
+# Type Declaration
+# ==============================================
+
+type vtservice_exec , exec_type, file_type;
+type vtservice ,domain;
+
+# ==============================================
+# Android Policy Rule
+# ==============================================
+
+# ==============================================
+# NSA Policy Rule
+# ==============================================
+
+# ==============================================
+# MTK Policy Rule
+# ==============================================
+
+init_daemon_domain(vtservice)
+binder_use(vtservice)
+binder_call(vtservice, mediaserver)
+binder_service(vtservice)
+
+###
+### Purpose: Add vtservice to support video telephony functionality
+###           3G VT/ViLTE both use this service which will also communication with IMCB/Rild
+###
+allow vtservice vtservice_service:service_manager add;
+unix_socket_connect(vtservice, volte_imsvt1, volte_imcb)
+unix_socket_connect(vtservice, rild_oem, mtkrild)
+allow vtservice mtkrild:unix_stream_socket connectto;
+allow vtservice fuse:dir search;
+allow vtservice fuse:file { read write open };
+allow vtservice radio_service:service_manager find;
+allow vtservice mediaserver_service:service_manager find;
+allow vtservice power_service:service_manager find;
+allow vtservice batterystats_service:service_manager find;
+
+###
+### Purpose: for access ccci device
+##3
+allow vtservice ccci_device:chr_file { read write open ioctl };
+
+###
+### Purpose: VDEC/VENC device node
+###
+allow vtservice Vcodec_device:chr_file { read write ioctl open };
+
+###
+### Purpose: for unix domain socket access /dev/socket/volte_vt
+###
+allow vtservice MTK_SMI_device:chr_file { read write ioctl open };
+allow vtservice sysfs:file write;
+allow vtservice volte_vt_socket:dir { read write ioctl open remove_name add_name };
+allow vtservice volte_vt_socket:dir write;
+allow vtservice volte_vt_socket:sock_file { create unlink read write };
+allow vtservice fwmarkd_socket:sock_file write;
+allow vtservice volte_ua:fd use;
+allow vtservice volte_ua:udp_socket connect;
+allow vtservice netd:unix_stream_socket connectto;
+allow vtservice untrusted_app:binder call;
+
+###
+### Purpose: for socket path between vt_service and volte_ua
+###
+allow vtservice volte_ua:udp_socket {read write setopt getattr getopt shutdown};
+allow vtservice self:udp_socket { create bind connect read write setopt getattr getopt shutdown };
+allow vtservice node:udp_socket { node_bind };
+
+###
+### Purpose: for using MDP
+###
+allow vtservice  pq_service:service_manager { find };
+allow vtservice pq:binder call;
+
+###
+### Purpose: for debug dump data
+###
+allow vtservice pq:fd use;
+allow vtservice storage_file:lnk_file read;
+allow vtservice devmap_device:chr_file read;
+allow vtservice devmap_device:chr_file open;
+allow vtservice devmap_device:chr_file ioctl;
+
