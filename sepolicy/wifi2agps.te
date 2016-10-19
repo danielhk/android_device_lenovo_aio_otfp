@@ -25,3 +25,6 @@ allow wifi2agps self:netlink_socket {write getattr setopt read bind create};
 allow wifi2agps self:udp_socket { create ioctl };
 allow wifi2agps agpsd_data_file:dir search;
 
+# for Nougat
+allow wifi2agps proc_net:file r_file_perms;
+

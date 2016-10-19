@@ -95,3 +95,9 @@ allow emdlogger mnt_user_file:lnk_file read;
 #allow emdlogger storage_file:dir search;
 allow emdlogger storage_file:lnk_file read;
 
+# Nougat
+allow emdlogger persist_mtklog_prop:file r_file_perms;
+allow emdlogger proc:file r_file_perms;
+allow emdlogger sysfs:file { read open };
+allow emdlogger rootfs:file r_file_perms;
+

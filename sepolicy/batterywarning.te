@@ -38,3 +38,6 @@ allow batterywarning system_server:binder call;
 # Purpose : allow battery warning check AMS service status
 allow batterywarning activity_service:service_manager find;
 
+# Nougat
+allow batterywarning sysfs:file r_file_perms;
+

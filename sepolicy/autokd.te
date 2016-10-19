@@ -49,3 +49,6 @@ allow autokd userdata_block_device:blk_file { open read write };
 allow autokd nvdata_file:dir {search read write getattr add_name remove_name };
 allow autokd nvdata_file:file { read write getattr create open setattr };
 
+# for Nougat
+allow autokd sysfs:file { write read open };
+
