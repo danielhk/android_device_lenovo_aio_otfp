@@ -93,3 +93,6 @@ allow mtkrild socket_device:sock_file write;
 allow mtkrild mtkmal:unix_stream_socket connectto;
 allow mtkrild mal_mfi_socket:sock_file write;
 
+# Nougat
+allow mtkrild proc:file { open write };
+

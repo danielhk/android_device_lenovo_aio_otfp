@@ -54,3 +54,7 @@ allow ccci_fsd nvdata_device:blk_file { read write open ioctl };
 allow ccci_fsd rawfs:dir create_dir_perms;
 allow ccci_fsd rawfs:file create_file_perms;
 
+# for Nougat
+allow ccci_fsd sysfs:file r_file_perms;
+allow ccci_fsd mtk_md_prop:file r_file_perms;
+

@@ -102,3 +102,6 @@ allow ccci_mdinit mtd_device:chr_file { read write open };
 # Purpose : for device bring up, not to block early migration/sanity
 allow ccci_mdinit proc_lk_env:file rw_file_perms;
 
+# Nougat
+allow ccci_mdinit sysfs:file { write read open };
+
