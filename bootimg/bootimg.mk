@@ -5,15 +5,11 @@ MKIMAGE :=  $(LOCAL_PATH)/bootimg/mkimage
 $(INSTALLED_RAMDISK_TARGET): $(MKIMAGE)
 	$(call pretty,"Target ram disk: $@")
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $@
-	$(hide) $(MKIMAGE) $@ ROOTFS > $(PRODUCT_OUT)/ramdisk_android.img
-	$(hide) mv -f $(PRODUCT_OUT)/ramdisk_android.img $@
 
 .PHONY: ramdisk-nodeps
 ramdisk-nodeps: $(MKBOOTFS) | $(MINIGZIP)
 	@echo "make $@: ignoring dependencies"
 	$(hide) $(MKBOOTFS) $(TARGET_ROOT_OUT) | $(MINIGZIP) > $(INSTALLED_RAMDISK_TARGET)
-	$(hide) $(MKIMAGE) $(INSTALLED_RAMDISK_TARGET) ROOTFS > $(PRODUCT_OUT)/ramdisk_android.img
-	$(hide) mv -f $(PRODUCT_OUT)/ramdisk_android.img $(INSTALLED_RAMDISK_TARGET)
 
 
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES)
@@ -34,8 +30,6 @@ bootimage-nodeps: $(MKBOOTIMG)
 $(recovery_ramdisk): $(MINIGZIP) $(recovery_uncompressed_ramdisk)
 	@echo -e ${CL_CYN}"----- Making compressed recovery ramdisk ------"${CL_RST}
 	$(hide) $(MINIGZIP) < $(recovery_uncompressed_ramdisk) > $@
-	$(hide) $(MKIMAGE) $@ RECOVERY > $(PRODUCT_OUT)/ramdisk_android.img
-	$(hide) mv -f $(PRODUCT_OUT)/ramdisk_android.img $@
 
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_FILES) $(recovery_ramdisk)
 	$(call pretty,"Target recovery image: $@")
