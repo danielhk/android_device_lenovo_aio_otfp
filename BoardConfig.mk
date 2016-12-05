@@ -94,6 +94,9 @@ TARGET_KERNEL_CONFIG := aio_otfp_m_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
 TARGET_MTK_KERNEL := true
 
+# Recovery allowed devices
+TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp_m,aio_otfp,K3Note
+
 # recovery
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 BOARD_HAS_NO_SELECT_BUTTON := true
