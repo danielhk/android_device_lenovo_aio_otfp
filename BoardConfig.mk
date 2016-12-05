@@ -191,4 +191,4 @@ TARGET_BLOBS_BYPASS_SYMBOL_ERR := true
 
 # Hardware SEPolicy
 BOARD_SEPOLICY_DIRS += \
-    device/lenovo/aio_otfp_m/sepolicy
+    device/lenovo/aio_otfp/sepolicy
