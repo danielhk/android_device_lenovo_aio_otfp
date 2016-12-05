@@ -1,0 +1,20 @@
+# cameraserver - camera daemon
+allow cameraserver CAM_CAL_DRV_device:chr_file { read write open ioctl };
+allow cameraserver camera_isp_device:chr_file { read write open ioctl };
+allow cameraserver camera_fdvt_device:chr_file { read write open ioctl };
+#allow cameraserver default_prop:property_service { set };	** need to change system/sepolicy, later **
+allow cameraserver device:chr_file { read write open };
+allow cameraserver devmap_device:chr_file { read write open ioctl };
+allow cameraserver init:unix_stream_socket { connectto };
+allow cameraserver kd_camera_hw_device:chr_file { read write open ioctl };
+allow cameraserver kd_camera_flashlight_device:chr_file { read write open ioctl };
+allow cameraserver MTK_SMI_device:chr_file { read open ioctl };
+allow cameraserver nvram_data_file:file { read open getattr };
+allow cameraserver proc:file { read open ioctl };
+allow cameraserver proc_meminfo:file { read open getattr };
+allow cameraserver property_socket:sock_file { write };
+allow cameraserver pq_service:service_manager { find };
+allow cameraserver sensorservice_service:service_manager { find };
+allow cameraserver sysfs:file { read write open };
+allow cameraserver system_server:unix_stream_socket { read write connectto };
+

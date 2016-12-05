@@ -58,3 +58,6 @@ allow pq pq_service:service_manager add;
 # Purpose : Allow permission check
 allow pq pq_service:service_manager { find };
 allow pq permission_service:service_manager { find };
+
+# Nougat
+allow pq proc:file { read open ioctl };

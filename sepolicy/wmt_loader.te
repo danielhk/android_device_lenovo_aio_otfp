@@ -31,4 +31,8 @@ allow wmt_loader stpwmt_device:chr_file { read write ioctl open };
 allow wmt_loader devpts:chr_file { read write getattr ioctl unlink };
 allow wmt_loader device:dir { write remove_name };
 allow wmt_loader device:file unlink;
+
+# Nougat
+allow wmt_loader wmt_prop:file r_file_perms;
+allow wmt_loader device:chr_file { unlink };
 init_daemon_domain(wmt_loader)

@@ -1,0 +1,6 @@
+# Nougat Mediacodec policies
+allow mediacodec pq_service:service_manager { find };
+allow mediacodec proc:file { read open getattr ioctl };
+allow mediacodec sysfs:file { read open };
+allow mediacodec proc_meminfo:file { read open getattr };
+

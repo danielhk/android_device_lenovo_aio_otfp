@@ -21,5 +21,3 @@ allow tune2fs block_device:dir search;
 
 # for Nougat
 allow tune2fs proc:file r_file_perms;
-
-

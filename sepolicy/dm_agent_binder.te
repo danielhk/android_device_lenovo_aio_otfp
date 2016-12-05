@@ -37,8 +37,8 @@ binder_service(dm_agent_binder)
 # Date : WK14.42
 # Operation : Migration 
 # Purpose : Allow DmAgent access nvram_data_file.
-allow dm_agent_binder nvram_data_file:dir { rw_dir_perms };
-allow dm_agent_binder nvdata_file:dir { rw_dir_perms };
+allow dm_agent_binder nvram_data_file:dir { rw_dir_perms create };
+allow dm_agent_binder nvdata_file:dir { rw_dir_perms create };
 
 # Date : WK14.42
 # Operation : Basic UT 
@@ -99,3 +99,4 @@ allow dm_agent_binder nvram_device:chr_file { rw_file_perms };
 # Operation : Migration
 # Purpose : for device bring up, not to block early migration/sanity
 allow dm_agent_binder nvdata_file:dir create;
+

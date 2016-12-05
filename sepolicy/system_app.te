@@ -132,7 +132,7 @@ allow system_app qemu_pipe_device:chr_file rw_file_perms;
 # Operation : Migration
 # Package: org.simalliance.openmobileapi.service
 # Purpose : ALPS01820916, for SmartcardService
-allow system_app system_app_data_file:file execute;
+#allow system_app system_app_data_file:file execute;
 
 # Date : 2014/11/17
 # Operation: SQC

@@ -95,3 +95,8 @@ allow init nvram_device:blk_file write;
 allow init device:chr_file create;
 allow init debugfs:dir mounton;
 allow init property_socket:sock_file write;
+
+# Nougat
+allow init loop_device:blk_file { write };
+allow init block_device:lnk_file setattr;
+

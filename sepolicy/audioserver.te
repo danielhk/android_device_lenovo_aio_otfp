@@ -1,0 +1,8 @@
+# audioserver - audio services
+allow audioserver audiohal_prop:file r_file_perms;
+allow audioserver tfa9897_device:chr_file { read write open ioctl };
+allow audioserver nvram_data_file:file { read write open getattr setattr create };
+allow audioserver nvram_data_file:dir { write add_name };
+allow audioserver ccci_device:chr_file { read write open ioctl };
+allow audioserver sysfs:file { read open };
+

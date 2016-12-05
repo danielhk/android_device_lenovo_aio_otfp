@@ -1,11 +1,13 @@
 # ==============================================
 # Policy File of /system/bin/emdlogger[x] Executable File 
 
+
 # ==============================================
 # Type Declaration
 # ==============================================
 type emdlogger_exec , exec_type, file_type;
 type emdlogger, domain;
+
 
 # ==============================================
 # MTK Policy Rule

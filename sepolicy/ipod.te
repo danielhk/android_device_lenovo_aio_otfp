@@ -87,7 +87,7 @@ allow ipod proc_drop_caches:file { open write };
 allow ipod self:capability sys_boot;
 allow ipod proc_sysrq:file { open write };
 
-allow ipod debugfs:file { open read getattr };
+allow ipod debugfs:file { getattr };
 
 # IPOH
 allow ipod system_data_file:dir { open read write add_name create remove_name };

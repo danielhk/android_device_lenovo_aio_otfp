@@ -65,3 +65,6 @@ allow mnld gps_data_file:file create_file_perms;
 # Purpose : for device bring up, not to block early migration/sanity
 allow mnld proc_lk_env:file rw_file_perms;
 
+# Nougat
+allow mnld wmt_prop:file r_file_perms;
+

@@ -43,7 +43,7 @@ allow nvram_agent_binder nvram_agent_service:service_manager add;
 allow nvram_agent_binder nvram_device:blk_file rw_file_perms;
 allow nvram_agent_binder mmcblk0_block_device:blk_file rw_file_perms;
 allow nvram_agent_binder nvdata_device:blk_file rw_file_perms;
-allow nvram_agent_binder nvram_data_file:dir create_dir_perms;
+allow nvram_agent_binder nvram_data_file:dir { create };
 allow nvram_agent_binder nvram_data_file:file create_file_perms;
 allow nvram_agent_binder nvram_data_file:lnk_file read;
 allow nvram_agent_binder nvdata_file:dir create_dir_perms;
@@ -58,9 +58,9 @@ allow nvram_agent_binder gyroscope_device:chr_file { read ioctl open };
 allow nvram_agent_binder init:unix_stream_socket connectto;
 allow nvram_agent_binder property_socket:sock_file write;
 allow nvram_agent_binder sysfs:file write;
-#allow nvram_agent_binder system_data_file:file { write open setattr create};
+allow nvram_agent_binder system_data_file:file { write open setattr create };
 allow nvram_agent_binder self:capability { fowner chown dac_override fsetid };
-allow nvram_agent_binder system_data_file:dir {create write add_name};
+allow nvram_agent_binder system_data_file:dir { create write add_name };
 
 # Purpose: for backup
 allow nvram_agent_binder nvram_device:chr_file {read write open ioctl};

@@ -54,3 +54,6 @@ allow atcid viarild:unix_stream_socket connectto;
 allow atci_service gpu_device:chr_file { read write open ioctl getattr };
 #allow atci_service CAM_CAL_DRV1_device:chr_file { read write open };
 allow atci_service pq:binder call;
+
+# Nougat
+allow atcid sysfs:file { read open };

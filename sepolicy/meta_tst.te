@@ -149,7 +149,7 @@ allow meta_tst ttyACM_device:chr_file { read write ioctl open };
 # Purpose : FT_EMMC_OP_FORMAT_TCARD
 allow meta_tst block_device:blk_file getattr;
 allow meta_tst system_block_device:blk_file getattr;
-allow meta_tst fuse_device:chr_file getattr;
+#allow meta_tst fuse_device:chr_file getattr;
 allow meta_tst shell_exec:file { read open };
 
 # Date: WK15.52

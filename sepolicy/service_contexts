@@ -7,7 +7,7 @@ search_engine       u:object_r:search_service:s0
 audioprofile        u:object_r:audio_service:s0
 mobile              u:object_r:mtk_mobile_service:s0
 mtk-perfservice     u:object_r:mtk_perf_service:s0
-recovery            u:object_r:mtk_recovery_service:s0
+#recovery            u:object_r:mtk_recovery_service:s0
 mtkhdmi             u:object_r:mtk_hdmi_service:s0
 msgmonitorservice   u:object_r:mtk_msg_monitor_service:s0
 anrmanager          u:object_r:mtk_anrmanager_service:s0

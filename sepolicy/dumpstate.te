@@ -15,5 +15,5 @@ allow dumpstate GoogleOtaBinder:binder call;
 #allow dumpstate system_data_file:file { rename write create unlink setattr };
 
 allow dumpstate dontpanic_data_file:dir search;
-allow dumpstate guiext-server:binder call;
+#allow dumpstate guiext-server:binder call;
 

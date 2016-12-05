@@ -227,9 +227,9 @@ allow mediaserver mtk_jpeg_device:chr_file { read ioctl open };
 # Date : WK14.41
 # Operation : Migration
 # Purpose : Lossless BT audio
-allow mediaserver shell_exec:file { read open execute execute_no_trans };
-allow mediaserver system_file:file execute_no_trans;
-allow mediaserver zygote_exec:file execute_no_trans;
+#allow mediaserver shell_exec:file { read open execute execute_no_trans };
+#allow mediaserver system_file:file execute_no_trans;
+#allow mediaserver zygote_exec:file execute_no_trans;
 
 # Date : WK14.41
 # Operation : Migration
@@ -349,7 +349,7 @@ allow mediaserver untrusted_app_tmpfs:file write;
 # Operation : WFD
 # Purpose : WFD notifies its status to thermal module
 allow mediaserver proc_thermal:file { write getattr open };
-allow mediaserver thermal_manager_exec:file { getattr execute read open execute_no_trans };
+allow mediaserver thermal_manager_exec:file { getattr execute read open };
 allow mediaserver proc_mtkcooler:file { read write open };
 allow mediaserver proc_mtktz:file { read write open };
 allow mediaserver proc_thermal:file { read write open };
@@ -433,3 +433,8 @@ allow mediaserver vtservice:fd use;
 # Operation : Migration
 # Purpose : allow mediaserver to find pq_service
 allow mediaserver pq_service:service_manager { find };
+
+# Nougat
+allow mediaserver proc:file { read open ioctl };
+allow mediaserver sysfs:file { read open };
+

@@ -53,7 +53,7 @@ allow nfc sdcard_external:file { read write getattr open create };
 # Operation : Refine
 # Purpose   : Set NFC permission for update screen (activity,dialog,animation, ex: Nfc Beam)
 
-allow nfc guiext-server:binder call;
+#allow nfc guiext-server:binder call;
 
 
 # ==============================================

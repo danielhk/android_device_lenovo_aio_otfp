@@ -18,7 +18,8 @@ init_daemon_domain(mtkrildmd2)
 net_domain(mtkrildmd2)
 allow mtkrildmd2 self:netlink_route_socket nlmsg_write;
 allow mtkrildmd2 kernel:system module_request;
-unix_socket_connect(mtkrildmd2, property, init)
+#unix_socket_connect(mtkrildmd2, property, init) #@daniel, use set_prop()
+set_prop(mtkrildmd2, init)
 allow mtkrildmd2 self:capability { setuid net_admin net_raw };
 allow mtkrildmd2 alarm_device:chr_file rw_file_perms;
 allow mtkrildmd2 cgroup:dir create_dir_perms;

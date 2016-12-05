@@ -29,7 +29,7 @@ allow akmd09911 msensor_device:chr_file { open ioctl read write };
 allow akmd09911 gsensor_device:chr_file { open ioctl read write };
 allow akmd09911 input_device:dir { search open read write };
 allow akmd09911 input_device:file { open read };
-allow akmd09911 akmd8963_access_file1:file { open read write };
+allow akmd09911 akmd8963_access_file1:file { open read write getattr setattr };
 allow akmd09911 akmd8963_access_file2:file { open read write};
 # Operate data partation directly, need modify later,e.g. use "data/misc/sensor".
 # for msensor daemon access "data/misc".
@@ -37,3 +37,4 @@ file_type_auto_trans(akmd09911, system_data_file, msensor_data_file)
 allow akmd09911 system_data_file:dir { create setattr };
 allow akmd09911 msensor_data_file:file { open write read create setattr};
 
+# Nougat

@@ -6,8 +6,8 @@ type mtk_default_prop, property_type;
 # Date: W14.32
 # Operation: Migration
 # Purpose: don't allow to use default_prop
-neverallow { domain -init } default_prop:property_service set;
-neverallow { domain -init -system_server -recovery } ctl_default_prop:property_service set;
+neverallow { domain -init -nvram_daemon } default_prop:property_service set;
+neverallow { domain -init -system_app -system_server -recovery } ctl_default_prop:property_service set;
 
 #=============allow ccci_mdinit to start gsm0710muxd==============
 type ctl_gsm0710muxd_prop, property_type;

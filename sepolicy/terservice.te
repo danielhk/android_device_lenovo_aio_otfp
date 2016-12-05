@@ -29,7 +29,8 @@ init_daemon_domain(terservice)
 allow terservice terservice_service:service_manager add;
 
 # property service
-unix_socket_connect(terservice, property, init)
+#unix_socket_connect(terservice, property, init) #@daniel, use set_prop()
+set_prop(terservice, init)
 allow terservice terservice_prop:property_service set;
 
 # ccci ioctl
@@ -39,4 +40,6 @@ allow terservice ccci_device:chr_file { read write ioctl open };
 binder_use(terservice) 
 binder_service(terservice) 
 
+# Nougat
+allow terservice persist_ril_prop:file { read open getattr };
 

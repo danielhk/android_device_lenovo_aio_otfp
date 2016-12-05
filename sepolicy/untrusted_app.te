@@ -14,7 +14,7 @@ allow untrusted_app guiext-server:binder { transfer call };
 # Operation : SQC 
 # Purpose : [ALPS01785313] Permission denied for dump hprof
 # Package: com.android.gallery3d
-allow untrusted_app anr_data_file:file rw_file_perms;
+#allow untrusted_app anr_data_file:file rw_file_perms;
 
 # Date : 2014/09/09
 # Operation : Development LCA Feature "Move OAT to SD Card"
@@ -81,4 +81,4 @@ allow untrusted_app mtk_mwblacklist_service:service_manager find;
 # Operation : Testing with third party, e.g. Hugeland
 # Purpose : Allow third party app connects to md_monitor's local socket
 # package:com.hugeland.mtktracer
-allow untrusted_app md_monitor:unix_stream_socket connectto;
+#allow untrusted_app md_monitor:unix_stream_socket connectto;
