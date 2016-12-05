@@ -132,6 +132,7 @@ BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_LEGACY_MTK_AV_BLOB := true
 BOARD_USES_MTK_AUDIO := true
 USE_CAMERA_STUB := true
+USE_MTK_CAMERA_WRAPPER := true
 BOARD_PROVIDES_RILD := true
 BOARD_RIL_CLASS := ../../../device/lenovo/aio_otfp/ril
 
