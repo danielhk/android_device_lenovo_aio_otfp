@@ -39,6 +39,12 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
 
+# MTK Helpers
+PRODUCT_PACKAGES += \
+    libccci_util \
+    libcam.halsensor \
+    libwvmsym
+
 # Extra packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
