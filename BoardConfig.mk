@@ -132,6 +132,7 @@ BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_LEGACY_MTK_AV_BLOB := true
 BOARD_USES_MTK_AUDIO := true
 USE_CAMERA_STUB := true
+BOARD_PROVIDES_RILD := true
 
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
