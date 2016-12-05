@@ -65,7 +65,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.mt6752.usb.rc:root/init.mt6752.usb.rc \
     $(LOCAL_PATH)/rootdir/init.mt6752.rc:root/init.mt6752.rc \
     $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
-    $(LOCAL_PATH)/rootdir/init.xlog.rc:root/init.xlog.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6752.rc:root/ueventd.mt6752.rc
 
 # RIL
