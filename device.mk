@@ -67,16 +67,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6752.rc:root/ueventd.mt6752.rc
 
-# RIL
-PRODUCT_PACKAGES += \
-    epdg_wod \
-    gsm0710muxd \
-    gsm0710muxdmd2 \
-    mtkrild \
-    mtkrildmd2 \
-    mtk-ril \
-    mtk-rilmd2
-
 # TWRP fstab
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
