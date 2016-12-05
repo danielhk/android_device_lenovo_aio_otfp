@@ -90,7 +90,7 @@ TARGET_KMODULES := true
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
-TARGET_KERNEL_CONFIG := aio_otfp_m_defconfig
+TARGET_KERNEL_CONFIG := aio_otfp_n_defconfig
 TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
 TARGET_MTK_KERNEL := true
 
