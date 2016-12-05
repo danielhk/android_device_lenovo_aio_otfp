@@ -25,8 +25,8 @@ init_daemon_domain(eemcs_mdinit)
 #unconfined_domain(eemcs_mdinit)
 
 #============= eemcs_mdinit ==============
-unix_socket_connect(eemcs_mdinit, property, init)
-
+#unix_socket_connect(eemcs_mdinit, property, init) #@daniel, use set_prop()
+set_prop(eemcs_mdinit, init)
 allow eemcs_mdinit { ctl_gsm0710muxd_prop ctl_gsm0710muxd-s_prop ctl_gsm0710muxd-d_prop }:property_service set;
 allow eemcs_mdinit { ctl_rildaemon_prop ctl_ril-daemon-s_prop ctl_ril-daemon-d_prop ctl_ril-daemon-mtk_prop }:property_service set;
 allow eemcs_mdinit { ctl_emcsmdlogger_prop ctl_eemcs_fmdl_prop }:property_service set;

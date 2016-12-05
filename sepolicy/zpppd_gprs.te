@@ -21,4 +21,5 @@ allow zpppd_gprs ppp_device:chr_file { read write open ioctl };
 allow zpppd_gprs system_file:file x_file_perms;
 allow zpppd_gprs shell_exec:file rx_file_perms;
 
-unix_socket_connect(zpppd_gprs, property, init)
+#unix_socket_connect(zpppd_gprs, property, init) #@daniel, use set_prop()
+set_prop(zpppd_gprs, init)

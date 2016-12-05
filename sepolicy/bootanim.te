@@ -18,7 +18,7 @@ allow bootanim mediaserver:binder transfer;
 # Date : WK14.36
 # Operation : Migration 
 # Purpose : for ui
-allow bootanim guiext-server:binder call;
+#allow bootanim guiext-server:binder call;
 allow bootanim guiext-server:binder transfer;
 
 # Date : WK14.37

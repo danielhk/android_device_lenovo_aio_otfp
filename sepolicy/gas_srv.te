@@ -28,7 +28,7 @@ allow gas_srv           gas_srv_service:service_manager     add;
 allow gas_srv           property_socket:sock_file           write;
 allow gas_srv           init:unix_stream_socket             connectto;
 
-allow gas_srv           debugfs:file                        {getattr read write ioctl open};
+#allow gas_srv           debugfs:file                        {getattr read write ioctl open};
 
 # For /proc/[pid]/cmdline accessing
 typeattribute           gas_srv                             mlstrustedsubject;
@@ -47,3 +47,8 @@ allow gas_srv           mtk_perf_service:service_manager    find;
 allow surfaceflinger    gas_srv_service:service_manager     find;
 allow untrusted_app     gas_srv_service:service_manager     find;
 allow platform_app      gas_srv_service:service_manager     find;
+
+# Nougat
+allow gas_srv           sysfs:file			    { read open };
+allow gas_srv           proc:file			    { open ioctl };
+

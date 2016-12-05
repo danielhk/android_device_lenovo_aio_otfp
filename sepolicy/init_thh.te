@@ -1,3 +1,4 @@
+#
 type init_thh_service, domain;
 type init_thh_service_exec, exec_type, file_type;
 

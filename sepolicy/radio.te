@@ -107,7 +107,7 @@ allow radio als_ps_device:chr_file { read open ioctl };
 # Date : 2015/01/20
 # Operation : IT
 # Purpose : for engineermode Usb PHY Tuning
-allow radio debugfs:file { read getattr };
+allow radio debugfs:file { getattr };
 
 # Date : 2015/01/21
 # Operation : IT
@@ -208,7 +208,7 @@ allow radio md_monitor:unix_stream_socket connectto;
 # Date : WK15.51 2015/12/19
 # Operation : Adapt CMCC FT auto test tool[CMDC Tester] to MTK platform
 # Purpose : for [CMDC Tester][com.hugeland.cdsplus] run on user load
-allow radio radio_data_file:file { execute execute_no_trans };
+#allow radio radio_data_file:file { execute execute_no_trans };
 allow radio media_rw_data_file:dir search;
 allow radio proc_mtkcooler:dir search;
 allow radio proc_mtktz:dir search;

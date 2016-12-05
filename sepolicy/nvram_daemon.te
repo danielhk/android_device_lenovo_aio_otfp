@@ -60,10 +60,10 @@ allow nvram_daemon init:unix_stream_socket connectto;
 
 # Purpose: for property set
 allow nvram_daemon property_socket:sock_file write;
-allow nvram_daemon sysfs:file write;
-#allow nvram_daemon system_data_file:file { write open setattr create};
+#allow nvram_daemon sysfs:file write;
+allow nvram_daemon system_data_file:file { read write open getattr setattr create };
 allow nvram_daemon self:capability { fowner chown dac_override fsetid };
-#allow nvram_daemon system_data_file:dir {create write add_name};
+allow nvram_daemon system_data_file:dir { create write add_name };
 
 # Purpose: for backup
 allow nvram_daemon nvram_device:chr_file {read write open ioctl};
@@ -81,4 +81,12 @@ allow nvram_daemon proc_lk_env:file { read write ioctl open };
 
 # Purpose: for workaround
 # Todo: Remove this policy
-allow nvram_daemon system_data_file:dir write;
+#allow nvram_daemon system_data_file:dir write;
+
+# Nougat
+allow nvram_daemon sysfs:file { write read open };
+allow nvram_daemon rootfs:dir { read open };
+allow nvram_daemon rootfs:file r_file_perms;
+allow nvram_daemon toolbox_exec:file { r_file_perms execute execute_no_trans };
+allow nvram_daemon default_prop:property_service set;
+

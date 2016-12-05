@@ -24,7 +24,7 @@ allow platform_app fm_device:chr_file rw_file_perms;
 # Package: com.android.gallery3d
 #allow platform_app init:binder transfer;
 # add debugfs policy for MMProfile
-allow platform_app debugfs:file { read ioctl };
+#allow platform_app debugfs:file { read ioctl };
 
 # Date: 2014/09/05
 # Operation: FullUT
@@ -217,7 +217,7 @@ allow platform_app system_app_service:service_manager find;
 # Operation: Migration
 # Purpose: enable accessing cache dir and executing renderscript lib for gallery3d
 # Package: com.android.gallery3d
-allow platform_app app_data_file:file execute;
+#allow platform_app app_data_file:file execute;
 
 # Date : 2015/08/17
 # Operation : Migration

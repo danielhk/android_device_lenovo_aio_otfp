@@ -134,7 +134,7 @@ allow vold resize_exec:file rx_file_perms;
 allow vold proc_mtkcooler:dir r_dir_perms;
 allow vold proc_mtktz:dir r_dir_perms;
 
-allow vold block_device:blk_file { read write ioctl open getattr };
+allow vold block_device:blk_file { ioctl getattr };
 
 # Date : WK15.37
 # Operation : Migration

@@ -6,7 +6,8 @@ net_domain(ril-3gddaemon)
 
 allow ril-3gddaemon self:netlink_route_socket nlmsg_write;
 allow ril-3gddaemon kernel:system module_request;
-unix_socket_connect(ril-3gddaemon, property, init)
+#unix_socket_connect(ril-3gddaemon, property, init) #@daniel, use set_prop()
+set_prop(ril-3gddaemon, init)
 allow ril-3gddaemon self:capability { setuid setgid net_admin net_raw dac_override sys_module };
 allow ril-3gddaemon alarm_device:chr_file rw_file_perms;
 allow ril-3gddaemon cgroup:dir create_dir_perms;

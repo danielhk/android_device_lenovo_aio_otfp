@@ -38,7 +38,7 @@ dontaudit mobile_log_d untrusted_app:fd use;
 dontaudit mobile_log_d isolated_app:fd use;
 
 #md32
-allow mobile_log_d sysfs:file write;
+#allow mobile_log_d sysfs:file write;
 allow mobile_log_d sysfs_md32:file { open write };
 allow mobile_log_d sysfs_md32:dir search;
 allow mobile_log_d md32_device:chr_file { read open };
@@ -87,3 +87,8 @@ allow mobile_log_d storage_file:file create_file_perms;
 allow mobile_log_d storage_file:lnk_file create_file_perms;
 allow mobile_log_d mnt_user_file:dir create_dir_perms;
 allow mobile_log_d mnt_user_file:lnk_file create_file_perms;
+
+# Nougat
+allow mobile_log_d toolbox_exec:file { r_file_perms execute execute_no_trans };
+allow mobile_log_d rootfs:file r_file_perms;
+allow mobile_log_d sysfs:file { write read open };

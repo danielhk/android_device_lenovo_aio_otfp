@@ -18,7 +18,8 @@ init_daemon_domain(viarild)
 net_domain(viarild)
 allow viarild self:netlink_route_socket nlmsg_write;
 allow viarild kernel:system module_request;
-unix_socket_connect(viarild, property, init)
+#unix_socket_connect(viarild, property, init) #@daniel, use set_prop()
+set_prop(viarild, init)
 allow viarild self:capability { setuid net_admin net_raw };
 allow viarild alarm_device:chr_file rw_file_perms;
 allow viarild cgroup:dir create_dir_perms;

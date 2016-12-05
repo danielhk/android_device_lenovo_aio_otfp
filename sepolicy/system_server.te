@@ -196,7 +196,7 @@ allow system_server dex2oat_exec:file r_file_perms;
 # Date: WK14.47
 # Operation : CTS
 # Purpose : for executing recovery.dex
-allow system_server system_data_file:file execute;
+#allow system_server system_data_file:file execute;
 
 # Date: WK14.47
 # Operation : MTBF
@@ -266,4 +266,8 @@ allow system_server teei_client_device:chr_file r_file_perms;
 # Package: com.mediatek.multiwindow.service
 allow system_server mtk_mwblacklist_service:service_manager find;
 
+# Nougat
 allow system_server tfa9897_device:chr_file rw_file_perms;
+allow system_server debugfs:dir { read open };
+allow system_server unlabeled:file unlink;
+

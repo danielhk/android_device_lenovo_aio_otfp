@@ -21,4 +21,5 @@ allow usbdongled ctl_ril3gd_prop:property_service set;
 allow usbdongled system_file:file x_file_perms;
 allow usbdongled shell_exec:file rx_file_perms;
 
-unix_socket_connect(usbdongled, property, init)
+#unix_socket_connect(usbdongled, property, init) #@daniel, use set_prop()
+set_prop(usbdongled, init)

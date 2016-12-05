@@ -37,7 +37,7 @@ file_type_auto_trans(enableswap, system_data_file, enableswap_data_file)
 # Purpose : Add new swap areas
 allow enableswap block_device:dir search;
 allow enableswap self:capability sys_admin;
-allow enableswap shell_exec:file { entrypoint read };
+#allow enableswap shell_exec:file { entrypoint read };
 allow enableswap sysfs:file write;
 allow enableswap tiny_mkswap_exec:file { read getattr open execute execute_no_trans };
 allow enableswap tiny_swapon_exec:file { read getattr open execute execute_no_trans };
@@ -56,3 +56,10 @@ allow enableswap self:capability dac_override;
 # Operation : Migration
 # Purpose : Allow more operations on init_tmpfs
 allow enableswap init_tmpfs:file { open write };
+
+# Nougat
+allow enableswap shell_exec:file { entrypoint read getattr };
+allow enableswap rootfs:file { read open };
+allow enableswap sysfs_zram:dir search;
+allow enableswap sysfs_zram:file {  write open };
+

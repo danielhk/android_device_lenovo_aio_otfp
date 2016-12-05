@@ -22,7 +22,7 @@ allow init self:tcp_socket create;
 # Date : WK14.43
 # Operation : Migration 
 # Purpose : Interact with kernel to perform autok
-allow autokd debugfs:file read;
+#allow autokd debugfs:file read;
 allow autokd init:unix_stream_socket connectto;
 allow autokd property_socket:sock_file write;
 allow autokd self:netlink_kobject_uevent_socket { read bind create setopt };
@@ -51,4 +51,3 @@ allow autokd nvdata_file:file { read write getattr create open setattr };
 
 # for Nougat
 allow autokd sysfs:file { write read open };
-

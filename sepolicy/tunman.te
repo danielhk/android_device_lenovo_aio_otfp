@@ -20,15 +20,16 @@ net_domain(tunman)
 unix_socket_connect(netdomain, tunman, tunman)
 
 # Allows us to set 'tunman.protocol' property
-unix_socket_connect(tunman, property, init) 
+#unix_socket_connect(tunman, property, init) #@daniel, use set_prop()
+set_prop(tunman, init)
 allow tunman tunman_prop:property_service set;
 
 # Allows us to talk to netd
 unix_socket_connect(tunman, netd, netd)
 
 # Multiple instance detection (fs lock)
-allow tunman shell_data_file:dir { search write add_name};
-allow tunman shell_data_file:file { create open read write lock };
+#allow tunman shell_data_file:dir { write add_name};
+allow tunman shell_data_file:file { create read write lock };
 
 #allow tunman system_data_file:dir { search write add_name};
 #allow tunman system_data_file:file { create open read write lock};

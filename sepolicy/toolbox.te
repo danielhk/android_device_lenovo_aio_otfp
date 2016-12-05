@@ -12,7 +12,7 @@ allow toolbox self:capability { dac_read_search sys_admin dac_override };
 # Operation : Migration
 # Purpose : partition need to change mode
 allow toolbox frp_block_device:blk_file setattr;
-allow toolbox self:capability chown;
+#allow toolbox self:capability { chown };
 
 # Date : WK15.43
 # Operation : Migration
@@ -28,3 +28,7 @@ allow toolbox protect2_block_device:blk_file rw_file_perms;
 allow toolbox tmpfs:dir { write rmdir setattr remove_name create add_name };
 allow toolbox toolbox_tmpfs:file { create open setattr};
 
+# Nougat
+allow toolbox self:capability { chown mknod };
+allow toolbox device:dir { write add_name };
+allow toolbox device:chr_file { create };
