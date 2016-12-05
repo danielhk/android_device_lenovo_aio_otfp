@@ -68,6 +68,7 @@ ro.mtk_omacp_support=1
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
 ro.telephony.sim.count=2
+ro.telephony.ril_class=MediaTekRIL
 ro.telephony.ril.config=fakeiccid
 #ro.telephony.default_network=0,1
 
