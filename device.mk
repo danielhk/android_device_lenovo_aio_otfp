@@ -52,10 +52,6 @@ PRODUCT_PACKAGES += \
     libtinymix \
     libtinyxml
 
-PRODUCT_PACKAGES += \
-    FMRadio \
-    YGPS
-
 PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Ramdisk
