@@ -128,7 +128,7 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
 # MTK Hardware
-BOARD_HAS_MTK_HARDWARE := true
+BOARD_USES_MTK_HARDWARE := true
 BOARD_USES_LEGACY_MTK_AV_BLOB := true
 BOARD_USES_MTK_AUDIO := true
 USE_CAMERA_STUB := true
