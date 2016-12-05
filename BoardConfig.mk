@@ -139,6 +139,9 @@ TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 BOARD_DISABLE_HW_ID_MATCH_CHECK := true;
 
+# Override healthd HAL
+BOARD_HAL_STATIC_LIBRARIES += libhealthd.mt6752
+
 # Deodex
 WITH_DEXPREOPT := false
 
