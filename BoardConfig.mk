@@ -15,9 +15,9 @@
 #
 
 # inherit from the proprietary version
--include vendor/lenovo/aio_otfp_m/BoardConfigVendor.mk
+-include vendor/lenovo/aio_otfp/BoardConfigVendor.mk
 
-LOCAL_PATH := device/lenovo/aio_otfp_m
+LOCAL_PATH := device/lenovo/aio_otfp
  
 MTK_K64_SUPPORT := yes
 
@@ -91,7 +91,7 @@ TARGET_KMODULES := true
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
 TARGET_KERNEL_CONFIG := aio_otfp_m_defconfig
-TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp_m
+TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
 TARGET_MTK_KERNEL := true
 
 # recovery
