@@ -139,7 +139,6 @@ WITH_DEXPREOPT := false
 
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
-MALLOC_IMPL := dlmalloc
 
 # Charger
 BOARD_CHARGER_SHOW_PERCENTAGE := true
