@@ -1,0 +1,48 @@
+diff --git a/include/ui/GraphicBuffer.h b/include/ui/GraphicBuffer.h
+index 3e127a1..ae56b93 100644
+--- a/include/ui/GraphicBuffer.h
++++ b/include/ui/GraphicBuffer.h
+@@ -73,9 +73,15 @@ public:
+     GraphicBuffer();
+ 
+     // creates w * h buffer
++#if MTK_HARDWARE
++    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
++            uint32_t inUsage);
++    GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
++            uint32_t inUsage, std::string requestorName);
++#else
+     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
+             uint32_t inUsage, std::string requestorName = "<Unknown>");
+-
++#endif
+     // create a buffer from an existing handle
+     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
+             uint32_t inUsage, uint32_t inStride, native_handle_t* inHandle,
+diff --git a/libs/ui/GraphicBuffer.cpp b/libs/ui/GraphicBuffer.cpp
+index df31d5f..0df41c8 100644
+--- a/libs/ui/GraphicBuffer.cpp
++++ b/libs/ui/GraphicBuffer.cpp
+@@ -52,7 +52,21 @@ GraphicBuffer::GraphicBuffer()
+     usage  = 0;
+     handle = NULL;
+ }
+-
++#ifdef MTK_HARDWARE
++GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
++        PixelFormat inFormat, uint32_t inUsage)
++    : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
++      mInitCheck(NO_ERROR), mId(getUniqueId()), mGenerationNumber(0)
++{
++    width  =
++    height =
++    stride =
++    format =
++    usage  = 0;
++    handle = NULL;
++    mInitCheck = initSize(inWidth, inHeight, inFormat, inUsage, "<Unknown>");
++}
++#endif
+ GraphicBuffer::GraphicBuffer(uint32_t inWidth, uint32_t inHeight,
+         PixelFormat inFormat, uint32_t inUsage, std::string requestorName)
+     : BASE(), mOwner(ownData), mBufferMapper(GraphicBufferMapper::get()),
