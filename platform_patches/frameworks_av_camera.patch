@@ -1,0 +1,99 @@
+diff --git a/camera/CameraParameters.cpp b/camera/CameraParameters.cpp
+index 76f92e7..38cdc5f 100644
+--- a/camera/CameraParameters.cpp
++++ b/camera/CameraParameters.cpp
+@@ -93,6 +93,9 @@ const char CameraParameters::KEY_VIDEO_SNAPSHOT_SUPPORTED[] = "video-snapshot-su
+ const char CameraParameters::KEY_VIDEO_STABILIZATION[] = "video-stabilization";
+ const char CameraParameters::KEY_VIDEO_STABILIZATION_SUPPORTED[] = "video-stabilization-supported";
+ const char CameraParameters::KEY_LIGHTFX[] = "light-fx";
++#ifdef MTK_HARDWARE
++const char CameraParameters::KEY_SNAPSHOT_PICTURE_FLIP[] = "snapshot-picture-filp";
++#endif
+ 
+ const char CameraParameters::TRUE[] = "true";
+ const char CameraParameters::FALSE[] = "false";
+diff --git a/camera/cameraserver/cameraserver.rc b/camera/cameraserver/cameraserver.rc
+index fea5a1d..08277d6 100644
+--- a/camera/cameraserver/cameraserver.rc
++++ b/camera/cameraserver/cameraserver.rc
+@@ -1,6 +1,6 @@
+ service cameraserver /system/bin/cameraserver
+     class main
+     user cameraserver
+-    group audio camera input drmrpc
++    group audio camera input drmrpc media
+     ioprio rt 4
+     writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+diff --git a/include/camera/CameraParameters.h b/include/camera/CameraParameters.h
+index 74517b4..d17a6a1 100644
+--- a/include/camera/CameraParameters.h
++++ b/include/camera/CameraParameters.h
+@@ -538,6 +538,9 @@ public:
+     // Supported modes for special effects with light.
+     // Example values: "lowlight,hdr".
+     static const char KEY_LIGHTFX[];
++#ifdef MTK_HARDWARE
++    static const char KEY_SNAPSHOT_PICTURE_FLIP[];
++#endif
+ 
+     // Value for KEY_ZOOM_SUPPORTED or KEY_SMOOTH_ZOOM_SUPPORTED.
+     static const char TRUE[];
+diff --git a/include/media/stagefright/MediaBufferGroup.h b/include/media/stagefright/MediaBufferGroup.h
+index dfa31b2..e8f9f0b 100644
+--- a/include/media/stagefright/MediaBufferGroup.h
++++ b/include/media/stagefright/MediaBufferGroup.h
+@@ -29,6 +29,9 @@ class MetaData;
+ 
+ class MediaBufferGroup : public MediaBufferObserver {
+ public:
++#ifdef MTK_HARDWARE
++    MediaBufferGroup();
++#endif
+     MediaBufferGroup(size_t growthLimit = 0);
+ 
+     // create a media buffer group with preallocated buffers
+@@ -48,8 +51,14 @@ public:
+     // If requestedSize is 0, any free MediaBuffer will be returned.
+     // If requestedSize is > 0, the returned MediaBuffer should have buffer
+     // size of at least requstedSize.
++#ifdef MTK_HARDWARE
++    status_t acquire_buffer(MediaBuffer **buffer, bool nonBlocking = false);
++    status_t acquire_buffer(
++            MediaBuffer **buffer, bool nonBlocking, size_t requestedSize);
++#else
+     status_t acquire_buffer(
+             MediaBuffer **buffer, bool nonBlocking = false, size_t requestedSize = 0);
++#endif
+ 
+     size_t buffers() const { return mBuffers.size(); }
+ 
+diff --git a/media/libstagefright/foundation/MediaBufferGroup.cpp b/media/libstagefright/foundation/MediaBufferGroup.cpp
+index cb78879..2113ee0 100644
+--- a/media/libstagefright/foundation/MediaBufferGroup.cpp
++++ b/media/libstagefright/foundation/MediaBufferGroup.cpp
+@@ -31,7 +31,11 @@ constexpr T MIN(const T &a, const T &b) { return a <= b ? a : b; }
+ // smaller threshold than an isolated new MediaBuffer.
+ static const size_t kSharedMemoryThreshold = MIN(
+         (size_t)MediaBuffer::kSharedMemThreshold, (size_t)(4 * 1024));
+-
++#ifdef MTK_HARDWARE
++MediaBufferGroup::MediaBufferGroup() :
++    mGrowthLimit(0) {
++}
++#endif
+ MediaBufferGroup::MediaBufferGroup(size_t growthLimit) :
+     mGrowthLimit(growthLimit) {
+ }
+@@ -126,7 +130,11 @@ bool MediaBufferGroup::has_buffers() {
+     }
+     return false;
+ }
+-
++#ifdef MTK_HARDWARE
++status_t MediaBufferGroup::acquire_buffer(MediaBuffer **buffer, bool nonBlocking) {
++    return acquire_buffer(buffer, nonBlocking, 0);
++}
++#endif
+ status_t MediaBufferGroup::acquire_buffer(
+         MediaBuffer **out, bool nonBlocking, size_t requestedSize) {
+     Mutex::Autolock autoLock(mLock);
