@@ -67,4 +67,5 @@ allow mnld proc_lk_env:file rw_file_perms;
 
 # Nougat
 allow mnld wmt_prop:file r_file_perms;
+allow mnld rootfs:lnk_file { getattr };
 

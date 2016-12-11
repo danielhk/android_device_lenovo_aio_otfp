@@ -46,3 +46,7 @@ allow fuelgauged input_device:file { open read };
 # Operate data partation directly, need modify later,e.g. use "data/misc/sensor".
 #allow fuelgauged system_data_file:dir { write add_name create setattr };
 #allow fuelgauged system_data_file:file { open write read create setattr};
+
+# Nougat
+allow fuelgauged rootfs:lnk_file { getattr };
+

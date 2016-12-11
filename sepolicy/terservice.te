@@ -42,4 +42,5 @@ binder_service(terservice)
 
 # Nougat
 allow terservice persist_ril_prop:file { read open getattr };
+allow terservice rootfs:lnk_file { getattr };
 

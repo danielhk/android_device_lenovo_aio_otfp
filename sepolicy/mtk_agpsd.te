@@ -42,3 +42,5 @@ allow mtk_agpsd storage_file:lnk_file create_file_perms;
 allow mtk_agpsd mnt_user_file:dir create_dir_perms;
 allow mtk_agpsd mnt_user_file:lnk_file create_file_perms;
 allow mtk_agpsd slpd:unix_dgram_socket sendto;
+allow mtk_agpsd rootfs:lnk_file { getattr };
+

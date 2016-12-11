@@ -65,4 +65,5 @@ allow ppl_agent mtd_device:chr_file { read write open };
 
 # Nougat
 allow ppl_agent proc:file r_file_perms;
+allow ppl_agent rootfs:lnk_file { getattr };
 

@@ -83,3 +83,7 @@ binder_call(em_svr, surfaceflinger)
 # Operation : M Migration
 # Purpose : add policy for system data file access
 allow em_svr system_data_file:file open;
+
+# Nougat
+allow em_svr rootfs:lnk_file { getattr };
+

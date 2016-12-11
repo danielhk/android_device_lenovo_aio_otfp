@@ -51,4 +51,5 @@ allow platform_app      gas_srv_service:service_manager     find;
 # Nougat
 allow gas_srv           sysfs:file			    { read open };
 allow gas_srv           proc:file			    { open ioctl };
+allow gas_srv		rootfs:lnk_file			    { getattr };
 

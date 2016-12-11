@@ -28,4 +28,5 @@ allow muxreport emd_device:chr_file { read write open };
 allow muxreport ril_mux_report_case_prop:file { read open getattr };
 allow muxreport persist_ril_prop:file { read open getattr };
 allow muxreport sysfs:file { read open };
+allow muxreport rootfs:lnk_file { getattr };
 

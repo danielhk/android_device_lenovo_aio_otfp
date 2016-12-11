@@ -12,3 +12,7 @@ allow wpa mtkrild:unix_stream_socket connectto;
 # this is a issue caused by low memory, so we should add this rule below
 allow wpa platform_app:fd use;
 allow wpa platform_app_tmpfs:file write;
+
+# Nougat
+allow wpa wifi_data_file:sock_file { create setattr };
+

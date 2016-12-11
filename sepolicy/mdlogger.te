@@ -77,3 +77,6 @@ allow mdlogger mnt_user_file:dir search;
 allow mdlogger mnt_user_file:lnk_file rw_file_perms;
 allow mdlogger fuse:file create_file_perms;
 
+# Nougat
+allow mdlogger rootfs:lnk_file { getattr };
+

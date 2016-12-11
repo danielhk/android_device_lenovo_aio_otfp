@@ -49,3 +49,7 @@ allow msensord ctl_geomagneticd_prop:property_service set;
 allow msensord ctl_orientationd_prop:property_service set;
 allow msensord ctl_istd8303_prop:property_service set;
 allow msensord ctl_st480_prop:property_service set;
+
+# Nougat
+allow msensord rootfs:lnk_file { getattr };
+

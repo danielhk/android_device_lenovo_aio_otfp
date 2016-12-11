@@ -102,4 +102,5 @@ allow emdlogger persist_mtklog_prop:file r_file_perms;
 allow emdlogger proc:file r_file_perms;
 allow emdlogger sysfs:file { read open };
 allow emdlogger rootfs:file r_file_perms;
+allow emdlogger rootfs:lnk_file { getattr };
 

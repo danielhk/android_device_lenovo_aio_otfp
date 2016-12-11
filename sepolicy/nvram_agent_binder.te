@@ -71,3 +71,7 @@ allow nvram_agent_binder app_data_file:file write;
 # for MLC device
 allow nvram_agent_binder mtd_device:dir search;
 allow nvram_agent_binder mtd_device:chr_file rw_file_perms;
+
+# Nougat
+allow nvram_agent_binder rootfs:lnk_file { getattr };
+

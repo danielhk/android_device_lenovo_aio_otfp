@@ -62,4 +62,5 @@ allow enableswap shell_exec:file { entrypoint read getattr };
 allow enableswap rootfs:file { read open };
 allow enableswap sysfs_zram:dir search;
 allow enableswap sysfs_zram:file {  write open };
+allow enableswap rootfs:lnk_file { getattr };
 

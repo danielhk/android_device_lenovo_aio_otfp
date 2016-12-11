@@ -32,4 +32,6 @@ allow thermald proc_thermal:file { read getattr open write };
 allow thermald system_server:binder call;
 allow thermald activity_service:service_manager find;
 
+# Nougat
+allow thermald rootfs:lnk_file { getattr };
 

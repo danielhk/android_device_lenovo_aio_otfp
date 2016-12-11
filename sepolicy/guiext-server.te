@@ -50,3 +50,7 @@ allow guiext-server permission_service:service_manager find;
 
 # allow guiext-server to read/write fifo
 allow guiext-server surfaceflinger:fifo_file {read write};
+
+# Nougat
+allow guiext-server rootfs:lnk_file { getattr };
+

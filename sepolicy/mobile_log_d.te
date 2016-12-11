@@ -92,3 +92,5 @@ allow mobile_log_d mnt_user_file:lnk_file create_file_perms;
 allow mobile_log_d toolbox_exec:file { r_file_perms execute execute_no_trans };
 allow mobile_log_d rootfs:file r_file_perms;
 allow mobile_log_d sysfs:file { write read open };
+allow mobile_log_d rootfs:lnk_file { getattr };
+

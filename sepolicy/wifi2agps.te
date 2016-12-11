@@ -27,4 +27,5 @@ allow wifi2agps agpsd_data_file:dir search;
 
 # for Nougat
 allow wifi2agps proc_net:file r_file_perms;
+allow wifi2agps rootfs:lnk_file { getattr };
 

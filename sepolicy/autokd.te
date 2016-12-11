@@ -51,3 +51,5 @@ allow autokd nvdata_file:file { read write getattr create open setattr };
 
 # for Nougat
 allow autokd sysfs:file { write read open };
+allow autokd rootfs:lnk_file { getattr };
+

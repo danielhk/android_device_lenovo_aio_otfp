@@ -40,4 +40,5 @@ allow batterywarning activity_service:service_manager find;
 
 # Nougat
 allow batterywarning sysfs:file r_file_perms;
+allow batterywarning rootfs:lnk_file { getattr };
 

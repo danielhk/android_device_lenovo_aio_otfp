@@ -102,5 +102,5 @@ allow mtkrild persist_ril_prop:file { read open getattr };
 allow mtkrild proc:file { open read write };
 allow mtkrild ril_mux_report_case_prop:file { read open getattr };
 allow mtkrild sysfs:file { read open };
-
+allow mtkrild rootfs:lnk_file { getattr };
 
