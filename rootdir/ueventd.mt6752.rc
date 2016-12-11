@@ -62,16 +62,9 @@
 /dev/pvr_sync			0666	root	root
 
 # LED device
-#/sys/devices/platform/leds-mt65xx/leds/green	delay_on	0664	system	system
-#/sys/devices/platform/leds-mt65xx/leds/green	delay_off	0664	system	system
-#/sys/devices/platform/leds-mt65xx/leds/red	delay_on	0664	system	system
-#/sys/devices/platform/leds-mt65xx/leds/red	delay_off	0664	system	system
-#/sys/devices/platform/leds-mt65xx/leds/blue	delay_on	0664	system	system
-#/sys/devices/platform/leds-mt65xx/leds/blue	delay_off	0664	system	system
-
-# NFC
-#/dev/msr3110			0666	root	root
-#/dev/mt6605			0660	nfc	radio
+/sys/devices/platform/leds-mt65xx/leds/green/brightness		0664	system	system
+/sys/devices/platform/leds-mt65xx/leds/red/brightness		0664	system	system
+/sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness 0664	system	system
 
 # GPS
 /dev/gps			0660	gps	system
