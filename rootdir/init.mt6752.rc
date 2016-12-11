@@ -60,9 +60,7 @@ on fs
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
-on fs
-
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
+    mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     # Support legacy paths
@@ -151,8 +149,6 @@ on post-fs-data
     #insmod /system/lib/modules/mali.ko
     chmod 666 /dev/mali0
     #chown system graphics /dev/mali
-
-
 
     # Touch Panel
     # chmod 0664 /dev/touch
@@ -253,7 +249,7 @@ on post-fs-data
     chown system system /sys/class/misc/m_batch_misc/batchbatch
     chown system system /sys/class/misc/m_batch_misc/batchflush
 
-	chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
     chmod 0660 /sys/class/misc/m_gyro_misc/gyroactive
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrodelay
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrobatch
@@ -421,7 +417,7 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
     mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
     mkdir /data/acdapi/ 0770 system system
@@ -433,7 +429,7 @@ on post-fs-data
     chown system /sys/devices/platform/msensor/driver/cpsreptz
     chown system /sys/devices/platform/gsensor/driver/cpsopmode
     chown system /sys/devices/platform/gsensor/driver/cpsrange
-    mkdir	/data/data/mcube 0664 system system
+    mkdir /data/data/mcube 0664 system system
 
     chown system /sys/class/input/input1/enable
     chown system /sys/class/input/input1/delay
@@ -578,16 +574,11 @@ on post-fs-data
     chmod 0660 /dev/kd_camera_flashlight
     chmod 0660 /dev/kd_camera_hw_bus2
     chmod 0660 /dev/FM50AF
-    chmod 0660 /dev/DW9718AF
     chmod 0660 /dev/CAM_CAL_DRV
     #lenovo.sw START wangsx3 20140814 add AF for AIO
     chmod 0660 /dev/DW9761OFILMA50AF
-    chmod 0660 /dev/DW9761OFILMAF
     chmod 0660 /dev/DW9761SUNNYAF
     #lenovo.sw END wangsx3 20140814  add AF for AIO
-    #lenovo.sw START add AF for AIO_ROW
-    chmod 0660 /dev/DW9718AF
-    #lenovo.sw END add AF for AIO_ROW
 
     chown system camera /dev/camera-sysram
     chown system camera /dev/camera-isp
@@ -597,16 +588,11 @@ on post-fs-data
     chown system camera /dev/kd_camera_flashlight
     chown system camera /dev/kd_camera_hw_bus2
     chown system camera /dev/FM50AF
-    chown system camera /dev/DW9718AF
     chown system camera /dev/CAM_CAL_DRV
     #lenovo.sw START wangsx3 20140814 add AF for AIO
-    chown system camera /dev/DW9761OFILMAF
     chown system camera /dev/DW9761OFILMA50AF
     chown system camera /dev/DW9761SUNNYAF
     #lenovo.sw END wangsx3 20140814  add AF for AIO
-    #lenovo.sw START add AF for AIO_ROW
-    chown system camera /dev/DW9718AF
-    #lenovo.sw END add AF for AIO_ROW
 
     #MATV
     chmod 0660 /dev/MATV
@@ -620,10 +606,6 @@ on post-fs-data
     chmod 0660 /dev/mt-mdp
     chown system media /dev/mt-mdp
 
-    # G2D
-    chmod 0660 /dev/mtkg2d
-    chown system media /dev/mtkg2d
-
     # SMI
     chmod 0660 /dev/MTK_SMI
     chown media media /dev/MTK_SMI
@@ -631,7 +613,7 @@ on post-fs-data
     #for eng mode
     chmod 0664 /dev/misc-sd
 
-   #change partition permission
+    #change partition permission
 
     chmod 0640 /mtd@sec_ro
     chown root system /mtd@sec_ro
@@ -709,8 +691,8 @@ on post-fs-data
     # Recycle stuffs
     exec /system/bin/rm -f /cache/.ipoh.img
 
-	#Thermal	
-	mkdir /data/.tp/ 0775 system system
+    #Thermal	
+    mkdir /data/.tp/ 0775 system system
 
     #create directory /data/subt for subtitle
     mkdir /mnt/subt/ 0770 media media
@@ -755,12 +737,6 @@ on boot
     chown root   radio  /sys/class/leds/lcd-backlight/duty
     chown root   radio  /sys/class/leds/lcd-backlight/div
     chown system system /sys/class/leds/lcd-backlight/trigger
-    chown system system /sys/class/leds/button-backlight/trigger
-    chown system system /sys/class/leds/keyboard-backlight/trigger
-    chown system system /sys/class/leds/jogball-backlight/trigger
-    chown system system /sys/class/leds/red/trigger
-    chown system system /sys/class/leds/green/trigger
-    chown system system /sys/class/leds/blue/trigger
 
     # Permission for hibernation
     chown radio system /sys/power/tuxonice
@@ -787,7 +763,7 @@ on boot
     chmod 0660 /proc/cpufreq/cpufreq_limited_max_freq_by_user
 
 ##Netlog tool
-   #change permissions about terminal
+    #change permissions about terminal
     chown root radio /proc/net/vlan/config
     chmod 0640 /proc/net/vlan/config
     chown root radio /proc/net/ip6_tables_matches
