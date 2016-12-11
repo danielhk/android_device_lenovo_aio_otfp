@@ -1,19 +1,19 @@
 #change partition permission
-/dev/block/mmcblk0		0660    root    system
-/dev/block/mmcblk0boot0		0660    root    system
-/dev/block/mmcblk0boot1		0660    root    system
-/dev/misc-sd			0660    root    system
-/dev/block/mmcblk0p12		0660    root    system
-/dev/block/mmcblk0p7		0640    root    system
-/dev/block/mmcblk0p8		0640    root    system
-/dev/block/mmcblk0p9		0640    root    system
-/dev/block/mmcblk0p5		0660    root    system
-/dev/block/mmcblk0p1		0660    root    system
-/dev/block/mmcblk0p20		0640    root    system
-/dev/block/mmcblk0p2		0660    root    system
-/dev/block/mmcblk0p10		0660    root    system
-/dev/block/mmcblk0p11		0640    root    system
-/dev/block/mmcblk0p16		0660    root    system
+/dev/block/mmcblk0						0660	root	system
+/dev/block/mmcblk0boot0						0660	root	system
+/dev/block/mmcblk0boot1						0660	root	system
+/dev/misc-sd							0660	root	system
+#/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/misc2	0660	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot	0640	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery	0640	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro	0640	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg	0660	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo	0660	root	system
+#/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/otp	0640	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram	0660	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para	0660	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo	0640	root	system
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp	0660	root	system
 
 # OTP
 /dev/otp			0660	system	system
