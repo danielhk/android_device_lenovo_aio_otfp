@@ -45,6 +45,12 @@ PRODUCT_PACKAGES += \
     libcam.halsensor \
     libwvmsym
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.mt6752 \
+    libcurl \
+    YGPS
+
 # Extra packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
