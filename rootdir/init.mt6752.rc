@@ -852,10 +852,12 @@ on property:persist.uartconsole.enable=1
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
+
 # MTK PR_DEBUG SWITCH
 on property:debug.MB.prdebug=1
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* +p"
     write /sys/kernel/debug/dynamic_debug/control "file *gpu* -p"
+
 on property:debug.MB.prdebug=0
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* -p"
 
@@ -870,19 +872,18 @@ service bugreport /system/bin/dumpstate -d -p -B \
     oneshot
     keycodes 114 115 116
 
-#on property:sys.boot_completed=1
-#    start gas_srv
+on property:sys.boot_completed=1
+    start gas_srv
 
-#service gas_srv /system/bin/gas_srv
-#    class core
-#    user system
-#    group system
-#    disabled
+service gas_srv /system/bin/gas_srv
+    class core
+    user system
+    group system
+    disabled
 
 service netdiag /system/bin/netdiag
     class main
     socket netdiag stream 0664 root inet
-
 
 service nvram_daemon /system/bin/nvram_daemon
     class main
