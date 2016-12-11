@@ -1,10 +1,6 @@
 # MTK platform .rc configure
 
 import init.project.rc
-#import init.xlog.rc
-#import init.aee.rc
-import init.volte.rc
-import init.mal.rc
 
 # init.modem.rc must be the LAST rc file because vold.post_fs_data_done is set in it
 import init.modem.rc
