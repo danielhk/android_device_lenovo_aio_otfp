@@ -13,3 +13,5 @@ allow hostapd system_wpa_socket:sock_file write;
 # Purpose: kernel module netdev-ap0 gets invalid during whole chip reset, no impact to normal flow, dontaudit
 dontaudit hostapd kernel:system module_request;
 
+# Nougat
+allow hostapd wifi_data_file:sock_file write;
