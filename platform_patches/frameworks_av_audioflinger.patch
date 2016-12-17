@@ -1,0 +1,37 @@
+diff --git a/services/audioflinger/Android.mk b/services/audioflinger/Android.mk
+index a50bfa2..1d1cfe3 100644
+--- a/services/audioflinger/Android.mk
++++ b/services/audioflinger/Android.mk
+@@ -74,6 +74,10 @@ endif
+ endif
+ #QTI Resampler
+ 
++ifeq ($(BOARD_USES_LEGACY_MTK_AV_BLOB),true)
++LOCAL_CFLAGS += -DLEGACY_MTK_AV_BLOB
++endif
++
+ LOCAL_MODULE:= libaudioflinger
+ 
+ LOCAL_SRC_FILES += \
+diff --git a/services/audioflinger/Threads.cpp b/services/audioflinger/Threads.cpp
+index 9049df6..eb3ed10 100644
+--- a/services/audioflinger/Threads.cpp
++++ b/services/audioflinger/Threads.cpp
+@@ -6314,7 +6314,7 @@ reacquire_wakelock:
+         // systemTime() is optional if the hardware supports timestamps.
+         mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] += framesRead;
+         mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = systemTime();
+-
++#ifndef LEGACY_MTK_AV_BLOB
+         // Update server timestamp with kernel stats
+         if (mInput->stream->get_capture_position != nullptr
+                 && mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
+@@ -6332,7 +6332,7 @@ reacquire_wakelock:
+         }
+         // Use this to track timestamp information
+         // ALOGD("%s", mTimestamp.toString().c_str());
+-
++#endif
+         if (framesRead < 0 || (framesRead == 0 && mPipeSource == 0)) {
+             ALOGE("read failed: framesRead=%zd", framesRead);
+             // Force input into standby so that it tries to recover at next read attempt
