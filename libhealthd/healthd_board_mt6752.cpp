@@ -33,13 +33,6 @@
 void
 healthd_board_init(struct healthd_config *config)
 {
-    config->batteryStatusPath      = android::String8("/sys/class/power_supply/battery/status");
-    config->batteryHealthPath      = android::String8("/sys/class/power_supply/battery/health");
-    config->batteryPresentPath     = android::String8("/sys/class/power_supply/battery/present");
-    config->batteryCapacityPath    = android::String8("/sys/class/power_supply/battery/capacity");
-    config->batteryVoltagePath     = android::String8("/sys/class/power_supply/battery/batt_vol");
-    config->batteryTemperaturePath = android::String8("/sys/class/power_supply/battery/batt_temp");
-    config->batteryTechnologyPath  = android::String8("/sys/class/power_supply/battery/technology");
     config->batteryCurrentAvgPath  = android::String8("/sys/class/power_supply/battery/BatteryAverageCurrent");
     // others use defaults
 }
