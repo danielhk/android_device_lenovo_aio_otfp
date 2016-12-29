@@ -39,20 +39,23 @@ index 74517b4..d17a6a1 100644
      // Value for KEY_ZOOM_SUPPORTED or KEY_SMOOTH_ZOOM_SUPPORTED.
      static const char TRUE[];
 diff --git a/include/media/stagefright/MediaBufferGroup.h b/include/media/stagefright/MediaBufferGroup.h
-index dfa31b2..e8f9f0b 100644
+index 3051406..d2a7d89 100644
 --- a/include/media/stagefright/MediaBufferGroup.h
 +++ b/include/media/stagefright/MediaBufferGroup.h
-@@ -29,6 +29,9 @@ class MetaData;
+@@ -29,7 +29,12 @@ class MetaData;
  
  class MediaBufferGroup : public MediaBufferObserver {
  public:
 +#ifdef MTK_HARDWARE
 +    MediaBufferGroup();
-+#endif
++    MediaBufferGroup(size_t growthLimit);
++#else
      MediaBufferGroup(size_t growthLimit = 0);
++#endif
  
      // create a media buffer group with preallocated buffers
-@@ -48,8 +51,14 @@ public:
+     MediaBufferGroup(size_t buffers, size_t buffer_size, size_t growthLimit = 0);
+@@ -48,8 +53,14 @@ public:
      // If requestedSize is 0, any free MediaBuffer will be returned.
      // If requestedSize is > 0, the returned MediaBuffer should have buffer
      // size of at least requstedSize.
