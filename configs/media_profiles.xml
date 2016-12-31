@@ -36,7 +36,7 @@
 <!ATTLIST Video height CDATA #REQUIRED>
 <!ATTLIST Video frameRate CDATA #REQUIRED>
 <!ELEMENT Audio EMPTY>
-<!ATTLIST Audio codec (amrnb|amrwb|aac|heaac|aaceld) #REQUIRED>
+<!ATTLIST Audio codec (amrnb|amrwb|aac|heaac|aaceld|vorbis) #REQUIRED>
 <!ATTLIST Audio bitRate CDATA #REQUIRED>
 <!ATTLIST Audio sampleRate CDATA #REQUIRED>
 <!ATTLIST Audio channels (1|2) #REQUIRED>
@@ -59,7 +59,7 @@
 <!ATTLIST VideoEncoderCap minFrameRate CDATA #REQUIRED>
 <!ATTLIST VideoEncoderCap maxFrameRate CDATA #REQUIRED>
 <!ELEMENT AudioEncoderCap EMPTY>
-<!ATTLIST AudioEncoderCap name (amrnb|amrwb|aac|heaac|aaceld) #REQUIRED>
+<!ATTLIST AudioEncoderCap name (amrnb|amrwb|aac|heaac|aaceld|vorbis) #REQUIRED>
 <!ATTLIST AudioEncoderCap enabled (true|false) #REQUIRED>
 <!ATTLIST AudioEncoderCap minBitRate CDATA #REQUIRED>
 <!ATTLIST AudioEncoderCap maxBitRate CDATA #REQUIRED>
@@ -779,6 +779,9 @@
 
     </CamcorderProfiles>
 
+    <EncoderOutputFileFormat name="3gp" />
+    <EncoderOutputFileFormat name="mp4" />
+
     <!--
 	If a codec is not enabled, it is invisible to the applications
 	In other words, the applications won't be able to use the codec
@@ -802,6 +805,11 @@
 	minFrameHeight="144" maxFrameHeight="480"
 	minFrameRate="15" maxFrameRate="30" />
 
+    <AudioEncoderCap name="aac" enabled="true"
+	minBitRate="8000" maxBitRate="160000"
+	minSampleRate="12000" maxSampleRate="48000"
+	minChannels="1" maxChannels="2" />
+
     <AudioEncoderCap name="amrnb" enabled="true"
         minBitRate="5525" maxBitRate="12200"
         minSampleRate="8000" maxSampleRate="8000"
@@ -812,11 +820,6 @@
 	minSampleRate="16000" maxSampleRate="16000"
 	minChannels="1" maxChannels="1" />
 
-    <AudioEncoderCap name="aac" enabled="true"
-	minBitRate="8000" maxBitRate="160000"
-	minSampleRate="12000" maxSampleRate="48000"
-	minChannels="1" maxChannels="2" />
-
     <AudioEncoderCap name="heaac" enabled="true"
 	minBitRate="8000" maxBitRate="32000"
 	minSampleRate="16000" maxSampleRate="48000"
@@ -826,12 +829,12 @@
 	minBitRate="16000" maxBitRate="320000"
 	minSampleRate="16000" maxSampleRate="48000"
 	minChannels="1" maxChannels="2" />
-<!--
+
     <AudioEncoderCap name="vorbis" enabled="true"
 	minBitRate="31980" maxBitRate="202960"
 	minSampleRate="8000" maxSampleRate="48000"
 	minChannels="1" maxChannels="2" />
--->
+
     <!--
         FIXME:
         We do not check decoder capabilities at present
@@ -841,9 +844,6 @@
     -->
     <VideoDecoderCap name="wmv" enabled="false"/>
     <AudioDecoderCap name="wma" enabled="false"/>
-
-    <EncoderOutputFileFormat name="3gp" />
-    <EncoderOutputFileFormat name="mp4" />
 
     <!--
 	The VideoEditor Capability configuration:
