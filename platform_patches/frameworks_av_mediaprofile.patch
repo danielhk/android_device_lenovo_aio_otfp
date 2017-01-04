@@ -75,9 +75,12 @@ index b1c7c15..80724da 100644
  
      CAMCORDER_QUALITY_VENDOR_START = 10000,
      CAMCORDER_QUALITY_VGA = 10000,
+
+diff --git a/media/libmedia/Android.mk b/media/libmedia/Android.mk
+index df4e4b6..77d73e3 100644
 --- a/media/libmedia/Android.mk
 +++ b/media/libmedia/Android.mk
-@@ -97,6 +97,15 @@ LOCAL_C_INCLUDES := \
+@@ -97,6 +97,10 @@ LOCAL_C_INCLUDES := \
      $(call include-path-for, audio-effects) \
      $(call include-path-for, audio-utils)
  
@@ -88,6 +91,7 @@ index b1c7c15..80724da 100644
  ifeq ($(BOARD_USES_MTK_HARDWARE),true)
  LOCAL_SRC_FILES += \
      mtkaudio_stubs.cpp
+
 diff --git a/media/libmedia/MediaProfiles.cpp b/media/libmedia/MediaProfiles.cpp
 index dd72c16..d5b331e 100644
 --- a/media/libmedia/MediaProfiles.cpp
