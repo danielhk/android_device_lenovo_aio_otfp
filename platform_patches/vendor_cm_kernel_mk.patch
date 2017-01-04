@@ -1,0 +1,54 @@
+diff --git a/build/tasks/kernel.mk b/build/tasks/kernel.mk
+index c4ddebf..ad7e838 100644
+--- a/build/tasks/kernel.mk
++++ b/build/tasks/kernel.mk
+@@ -296,6 +296,23 @@ $(KERNEL_CONFIG): $(KERNEL_OUT_STAMP) $(KERNEL_DEFCONFIG_SRC) $(KERNEL_ADDITIONA
+ 			$(KERNEL_SRC)/scripts/kconfig/merge_config.sh -m -O $(KERNEL_OUT) $(KERNEL_OUT)/.config $(KERNEL_SRC)/arch/$(KERNEL_ARCH)/configs/$(KERNEL_ADDITIONAL_CONFIG); \
+ 			$(MAKE) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) KCONFIG_ALLCONFIG=$(KERNEL_OUT)/.config alldefconfig; fi
+ 
++$(KERNEL_MODULES):
++	$(hide) if grep -q 'CONFIG_MODULES=y' $(KERNEL_CONFIG) ; \
++		then \
++			echo -e ${CL_GRN}"Building Kernel Modules"${CL_RST} ; \
++			$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules && \
++			$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules_install && \
++			$(mv-modules) && \
++			$(clean-module-folder) ; \
++		else \
++			echo "Kernel Modules not enabled" ; \
++		fi ;
++
++TARGET_MTK_KERNEL_BINARIES: $(KERNEL_OUT_STAMP) $(KERNEL_CONFIG) $(KERNEL_HEADERS_INSTALL_STAMP)
++	@echo "Building Kernel"
++	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE)
++	$(KERNEL_MODULES)
++
+ TARGET_KERNEL_BINARIES: $(KERNEL_OUT_STAMP) $(KERNEL_CONFIG) $(KERNEL_HEADERS_INSTALL_STAMP)
+ 	@echo "Building Kernel"
+ 	$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) $(TARGET_PREBUILT_INT_KERNEL_TYPE)
+@@ -306,19 +323,13 @@ TARGET_KERNEL_BINARIES: $(KERNEL_OUT_STAMP) $(KERNEL_CONFIG) $(KERNEL_HEADERS_IN
+ 			else \
+ 				echo "DTBs not enabled" ; \
+ 			fi ;
+-	$(hide) if grep -q 'CONFIG_MODULES=y' $(KERNEL_CONFIG) ; \
+-			then \
+-				echo "Building Kernel Modules" ; \
+-				$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules && \
+-				$(MAKE) $(MAKE_FLAGS) -C $(KERNEL_SRC) O=$(KERNEL_OUT) INSTALL_MOD_PATH=../../$(KERNEL_MODULES_INSTALL) ARCH=$(KERNEL_ARCH) $(KERNEL_CROSS_COMPILE) modules_install && \
+-				$(mv-modules) && \
+-				$(clean-module-folder) ; \
+-			else \
+-				echo "Kernel Modules not enabled" ; \
+-			fi ;
+-
++	$(KERNEL_MODULES)
+ 
+-$(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
++ifeq ($(TARGET_MTK_KERNEL),true)
++  $(TARGET_KERNEL_MODULES): TARGET_MTK_KERNEL_BINARIES
++else
++  $(TARGET_KERNEL_MODULES): TARGET_KERNEL_BINARIES
++endif
+ 
+ $(TARGET_PREBUILT_INT_KERNEL): $(TARGET_KERNEL_MODULES)
+ 
