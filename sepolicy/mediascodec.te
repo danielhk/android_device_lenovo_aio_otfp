@@ -1,7 +1,9 @@
 # Nougat Mediacodec policies
+allow mediacodec MTK_SMI_device:chr_file { read open ioctl };
+allow mediacodec Vcodec_device:chr_file { read write open ioctl };
 allow mediacodec pq_service:service_manager { find };
 allow mediacodec proc:file { read open getattr ioctl };
-allow mediacodec sysfs:file { read open };
+allow mediacodec sysfs:file { read write open };
 allow mediacodec proc_meminfo:file { read open getattr };
 allow mediacodec rootfs:lnk_file { getattr };
 

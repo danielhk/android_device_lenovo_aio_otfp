@@ -53,4 +53,5 @@ allow guiext-server surfaceflinger:fifo_file {read write};
 
 # Nougat
 allow guiext-server rootfs:lnk_file { getattr };
+allow guiext-server ion_device:chr_file { open read write ioctl };
 
