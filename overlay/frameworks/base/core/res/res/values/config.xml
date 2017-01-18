@@ -261,5 +261,8 @@
 
     <!-- Flag specifying whether VT is available on device -->
     <bool name="config_device_vt_available">false</bool>
-    
+
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">true</bool>
+
 </resources>
