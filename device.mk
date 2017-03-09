@@ -51,6 +51,10 @@ PRODUCT_PACKAGES += \
     libcurl \
     YGPS
 
+PRODUCT_PACKAGES += \
+    FMRadio \
+    libfmjni
+
 # Extra packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
