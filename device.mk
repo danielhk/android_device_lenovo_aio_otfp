@@ -15,12 +15,12 @@
 #
 
 # call the proprietary setup
-$(call inherit-product, vendor/lenovo/aio_otfp_m/aio_otfp_m-vendor.mk)
+$(call inherit-product, vendor/lenovo/aio_otfp/aio_otfp-vendor.mk)
 
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_as_supl.mk)
 
-LOCAL_PATH := device/lenovo/aio_otfp_m
+LOCAL_PATH := device/lenovo/aio_otfp
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
