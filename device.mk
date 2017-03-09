@@ -112,6 +112,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # build.prop
 PRODUCT_PROPERTY_OVERRIDES += \
+    media.stagefright.legacyencoder=true \
+    media.stagefright.less-secure=true \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \
     persist.sys.root_access=0
