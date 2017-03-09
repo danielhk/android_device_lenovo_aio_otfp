@@ -26,9 +26,6 @@ LOCAL_PATH := device/lenovo/aio_otfp
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-# Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp_m,K3Note
-
 # Audio policy & codec
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
