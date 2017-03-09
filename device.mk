@@ -116,7 +116,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.less-secure=true \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \
-    persist.sys.root_access=0
+    persist.sys.root_access=0 \
+    ro.sys.fw.bg_apps_limits=5
 
 # extra log controls prop
 PRODUCT_PROPERTY_OVERRIDES += \
