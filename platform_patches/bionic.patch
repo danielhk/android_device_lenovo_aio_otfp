@@ -1,0 +1,20 @@
+diff --git a/libc/libc.arm.map b/libc/libc.arm.map
+index 38f8437..15192e8 100644
+--- a/libc/libc.arm.map
++++ b/libc/libc.arm.map
+@@ -122,6 +122,7 @@ LIBC {
+     __pselect6; # arm x86 mips
+     __pthread_cleanup_pop;
+     __pthread_cleanup_push;
++    __pthread_gettid; # arm x86 mips nobrillo
+     __ptrace; # arm x86 mips
+     __putlong;
+     __putshort;
+@@ -1401,7 +1402,6 @@ LIBC_PRIVATE {
+     __page_size; # arm x86 mips nobrillo
+     __popcount_tab; # arm
+     __popcountsi2; # arm x86 mips
+-    __pthread_gettid; # arm x86 mips nobrillo
+     __restore_core_regs; # arm
+     __sclose; # arm x86 mips
+     __sdidinit; # arm x86 mips nobrillo
