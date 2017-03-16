@@ -193,6 +193,9 @@ TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 # Hack for build
 #TARGET_BLOBS_BYPASS_SYMBOL_ERR := true
 
+# CM SEPolicy flags
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Hardware SEPolicy
 BOARD_SEPOLICY_DIRS += \
     device/lenovo/aio_otfp/sepolicy
