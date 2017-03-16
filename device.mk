@@ -80,10 +80,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6752.rc:root/ueventd.mt6752.rc
 
-# TWRP fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
-
 # WiFi
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
