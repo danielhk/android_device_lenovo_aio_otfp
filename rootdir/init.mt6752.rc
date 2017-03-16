@@ -719,6 +719,10 @@ on boot
     chown system system /sys/class/leds/torch/brightness
     chown system system /sys/class/leds/flash/brightness
 #lenovo.sw END wangsx3 add for leds sys node
+    chown system system /sys/class/leds/test-led/brightness
+    chown system system /sys/class/leds/test-led/trigger
+    chown system system /sys/class/leds/greenled/brightness
+    chown system system /sys/class/leds/greenled/trigger
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
