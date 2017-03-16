@@ -187,6 +187,11 @@ WIFI_DRIVER_FW_PATH_STA          := STA
 WIFI_DRIVER_FW_PATH_AP           := AP
 WIFI_DRIVER_FW_PATH_P2P          := P2P
 
+# LED Path
+BOARD_RED_LED_PATH	:= "/sys/class/leds/test-led"
+BOARD_GREEN_LED_PATH	:= "/sys/class/leds/greenled"
+#BOARD_BLUE_LED_PATH	:= ""
+
 TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
