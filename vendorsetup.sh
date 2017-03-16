@@ -1,2 +1,3 @@
+add_lunch_combo carbon_aio_otfp_m-userdebug
 add_lunch_combo omni_aio_otfp_m-userdebug
 
