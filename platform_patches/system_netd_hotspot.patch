@@ -7,7 +7,7 @@ index cda8f5f..670d50a 100644
          goto err_return;
      }
 -
-+#ifdef TARGET_ENABLE_IPV6_RFFILTER
++#ifndef TARGET_DISABLE_IPV6_RPFILTER
      if (runCmd(ARRAY_SIZE(cmd4), cmd4) && add) {
          rc = -1;
          goto err_rpfilter;
