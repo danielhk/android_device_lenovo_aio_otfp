@@ -1,5 +1,24 @@
+diff --git a/libc/bionic/ndk_cruft.cpp b/libc/bionic/ndk_cruft.cpp
+index 3ac88f8..6ccb9a1 100644
+--- a/libc/bionic/ndk_cruft.cpp
++++ b/libc/bionic/ndk_cruft.cpp
+@@ -340,10 +340,13 @@ size_t dlmalloc_usable_size(void* ptr) {
+ }
+ 
+ // In L we added a public pthread_gettid_np, but some apps were using the private API.
+-pid_t __pthread_gettid(pthread_t t) {
++pid_t __pthread_gettid_libc(pthread_t t) {
+   return pthread_gettid_np(t);
+ }
+ 
++__asm__(".symver __pthread_gettid_libc,__pthread_gettid@LIBC");
++__asm__(".symver __pthread_gettid_libc,__pthread_gettid@@LIBC_PRIVATE");
++
+ // Older versions of apportable used dlmalloc directly instead of malloc,
+ // so export this compatibility shim that simply calls malloc.
+ void* dlmalloc(size_t size) {
 diff --git a/libc/libc.arm.map b/libc/libc.arm.map
-index 38f8437..15192e8 100644
+index 38f8437..fc7d37a 100644
 --- a/libc/libc.arm.map
 +++ b/libc/libc.arm.map
 @@ -122,6 +122,7 @@ LIBC {
@@ -10,11 +29,15 @@ index 38f8437..15192e8 100644
      __ptrace; # arm x86 mips
      __putlong;
      __putshort;
-@@ -1401,7 +1402,6 @@ LIBC_PRIVATE {
-     __page_size; # arm x86 mips nobrillo
-     __popcount_tab; # arm
-     __popcountsi2; # arm x86 mips
--    __pthread_gettid; # arm x86 mips nobrillo
-     __restore_core_regs; # arm
-     __sclose; # arm x86 mips
-     __sdidinit; # arm x86 mips nobrillo
+diff --git a/libc/libc.map.txt b/libc/libc.map.txt
+index 0e41f6c..3e87dad 100644
+--- a/libc/libc.map.txt
++++ b/libc/libc.map.txt
+@@ -122,6 +122,7 @@ LIBC {
+     __pselect6; # arm x86 mips
+     __pthread_cleanup_pop;
+     __pthread_cleanup_push;
++    __pthread_gettid; # arm x86 mips nobrillo
+     __ptrace; # arm x86 mips
+     __putlong;
+     __putshort;
