@@ -2,3 +2,10 @@
 # MTK Policy Rule
 # ============
 dontaudit logd unlabeled:dir search;
+
+# Nougat
+allow logd system_prop:file { getattr open read };
+allow logd zoneinfo_data_file:dir { search };
+allow logd log_tag_prop:file { getattr open read };
+allow logd self:file { open read };
+
