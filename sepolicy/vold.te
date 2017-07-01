@@ -156,3 +156,12 @@ allow vold mobicore_user_device:chr_file { read write ioctl open };
 # Operation : create symbolic link for /storage/sdcard1
 allow vold storage_file:lnk_file {create unlink};
 
+# Nougat
+allow vold init:fd use;
+allow vold null_device:chr_file { read write open };
+allow vold self:unix_stream_socket { read write };
+allow vold urandom_device:chr_file { read getattr ioctl open };
+allow vold properties_device:dir getattr;
+allow vold property_contexts:file { getattr read open };
+allow vold properties_serial:file { getattr read open };
+

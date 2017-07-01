@@ -23,7 +23,7 @@ allow mnld init:unix_stream_socket connectto;
 allow mnld property_socket:sock_file rw_file_perms;
 allow mnld system_data_file:dir rw_dir_perms;
 allow mnld system_data_file:dir create_dir_perms;
-allow mnld system_data_file:file { open read};
+#allow mnld system_data_file:file { open read};
 file_type_auto_trans(mnld,system_data_file,mnld_data_file);
 allow mnld mnld_data_file:file rw_file_perms;
 allow mnld mnld_data_file:file create_file_perms;
@@ -56,7 +56,7 @@ allow mnld mtd_device:dir search;
 allow mnld platform_app:unix_stream_socket connectto;
 allow mnld system_app:unix_stream_socket connectto;
 allow mnld apk_data_file:dir { write add_name };
-allow mnld apk_data_file:file { write create };
+#allow mnld apk_data_file:file { write create };
 allow mnld gps_data_file:dir rw_dir_perms;
 allow mnld gps_data_file:file create_file_perms;
 
@@ -66,6 +66,11 @@ allow mnld gps_data_file:file create_file_perms;
 allow mnld proc_lk_env:file rw_file_perms;
 
 # Nougat
-allow mnld wmt_prop:file r_file_perms;
+allow mnld apk_data_file:file { open read write create getattr };
 allow mnld rootfs:lnk_file { getattr };
+allow mnld storage_file:lnk_file { read };
+allow mnld mnt_user_file:lnk_file { read };
+allow mnld mnt_user_file:dir { search };
+allow mnld system_data_file:file { open read write getattr };
+allow mnld wmt_prop:file r_file_perms;
 

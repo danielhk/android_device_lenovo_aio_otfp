@@ -100,4 +100,9 @@ allow init property_socket:sock_file write;
 allow init loop_device:blk_file { write };
 allow init block_device:lnk_file setattr;
 allow init debugfs:file { write };
+allow init null_device:chr_file { read write };
+allow init properties_serial:file { getattr read open };
+allow init self:file write;
+allow init self:unix_stream_socket { accept getopt listen read write };
+allow init self:fd use;
 

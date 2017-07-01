@@ -205,3 +205,18 @@ allow debuggerd teei_fp_device:chr_file rw_file_perms;
 allow debuggerd teei_client_device:chr_file rw_file_perms;
 
 allow debuggerd tfa9897_device:chr_file rw_file_perms;
+
+# Nougat
+allow debuggerd init:fd use;
+allow debuggerd null_device:chr_file { read write };
+allow debuggerd urandom_device:chr_file { getattr ioctl open read };
+allow debuggerd properties_device:dir { getattr };
+allow debuggerd property_contexts:file { getattr read open };
+allow debuggerd properties_serial:file { getattr read open };
+allow debuggerd sysfs_devices_system_cpu:dir search;
+allow debuggerd sysfs_devices_system_cpu:file { getattr read open };
+allow debuggerd self:unix_stream_socket { create setopt bind listen read };
+allow debuggerd self:process fork;
+allow debuggerd self:unix_dgram_socket { create connect };
+allow debuggerd log_tag_prop:file { getattr read open };
+
