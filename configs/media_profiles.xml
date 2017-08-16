@@ -172,7 +172,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -183,7 +183,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -249,7 +249,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -260,7 +260,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -304,7 +304,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -337,7 +337,7 @@
 	    <Video codec="h264"
 		   bitRate="4500000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="15" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -348,7 +348,7 @@
 	    <Video codec="h264"
 		   bitRate="8500000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="15" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -403,7 +403,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="64000"
@@ -447,7 +447,7 @@
 	    <Video codec="h264"
 		   bitRate="8500000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="15" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -566,7 +566,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -577,7 +577,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -643,7 +643,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -654,7 +654,7 @@
 	    <Video codec="h264"
 		   bitRate="17000000"
 		   width="1920"
-		   height="1088"
+		   height="1080"
 		   frameRate="30" />
 	    <Audio codec="aac"
 		   bitRate="128000"
@@ -856,7 +856,7 @@
 	For this platform, it allows maximum 30MB(3MB per 1080p frame x 10
 	frames) memory.
     -->
-    <VideoEditorCap maxInputFrameWidth="1920" maxInputFrameHeight="1088"
+    <VideoEditorCap maxInputFrameWidth="1920" maxInputFrameHeight="1080"
 		    maxOutputFrameWidth="1280" maxOutputFrameHeight="720"
 		    maxPrefetchYUVFrames="6"/>
     <!--
