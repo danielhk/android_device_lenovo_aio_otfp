@@ -33,13 +33,6 @@ service gsm0710muxd /system/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
     group radio cache inet misc
     disabled
     oneshot
-
-service gsm0710muxdmd2 /system/bin/gsm0710muxdmd2 -s /dev/ccci2_tty0 -f 512 -n 8 -m basic
-    class core
-    user root
-    group radio cache inet misc
-    disabled
-    oneshot
     
 service muxreport-daemon /system/bin/muxreport
     class core
@@ -73,24 +66,6 @@ service ril-daemon-mtk /system/bin/mtkrild
     disabled
     oneshot
 
-service rild-mtkmd2 /system/bin/mtkrildmd2
-    class core
-    socket rild-md2 stream 660 root radio
-    socket rild2-md2 stream 660 root radio
-    socket rild-debug-md2 stream 660 radio system
-    socket rild-oem-md2 stream 660 radio system
-    socket rild-mtk-ut-md2 stream 660 radio net_bt
-    socket rild-mtk-ut-2-md2 stream 660 radio net_bt
-    socket rild-mtk-modem-md2 stream 660 radio system
-    socket rild-atci-md2 stream 660 root radio
-    socket rild-mal-md2 stream 660 radio system
-    socket rild-mal-at-md2 stream 660 radio system
-    socket rild-vsim-md2 stream 660 root radio
-    user root
-    group radio cache inet misc audio sdcard_r sdcard_rw log system
-    disabled
-    oneshot
-
 service md_minilog_util /system/bin/md_minilog_util
     user radio
     disabled
@@ -105,19 +80,7 @@ service ccci_fsd /system/bin/ccci_fsd 0
     class core
     oneshot
 
-service ccci2_fsd /system/bin/ccci_fsd 1
-    user radio
-    group  radio system
-    class core
-    oneshot
-
 service ccci_mdinit /system/bin/ccci_mdinit 0
-    user system
-    group radio system
-    class core
-    oneshot
-
-service ccci2_mdinit /system/bin/ccci_mdinit 1
     user system
     group radio system
     class core
