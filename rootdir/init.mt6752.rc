@@ -706,6 +706,9 @@ on boot
 # lenovo-sw jiayh2 , modi vm emmc for ALPS02033794 end
     chmod 0660 /sys/power/autosleep
 
+# Power management settings
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
+
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 #lenovo.sw START wangsx3 add for leds sys node
     chmod 0666 /sys/class/leds/flash/brightness
@@ -842,11 +845,6 @@ service start_modem /system/bin/md_ctrl 1
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
-
-# Update the second boot logo
-#service bootlogoupdater /system/bin/boot_logo_updater
-#    class core
-#    oneshot
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
