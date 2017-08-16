@@ -43,6 +43,7 @@ PRODUCT_PACKAGES += \
     libgralloc_extra \
     libgui_ext \
     libion \
+    lights.mt6752 \
     libui_ext \
     libwvmsym
 
