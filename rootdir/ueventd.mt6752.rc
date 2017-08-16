@@ -15,9 +15,6 @@
 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo	0640	root	system
 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp	0660	root	system
 
-# OTP
-/dev/otp			0660	system	system
-
 #connectivity
 /dev/stpwmt			0660	system	system
 /dev/wmtdetect			0660	system	system
@@ -45,9 +42,8 @@
 # ccci device
 /dev/ccci*			0660	radio	radio
 /dev/ttyC*			0660	radio	radio
-/sys/kernel/ccci modem_info	0644	radio	radio
-/sys/kernel/ccci md1_postfix	0644	radio	radio
-/sys/kernel/ccci md2_postfix	0644	radio	radio
+/sys/kernel/ccci/debug		0660	radio	radio
+/sys/kernel/ccci/md_en		0660	radio	radio
 /dev/eemcs*			0660	radio	radio
 /dev/emd*			0660	radio	radio
 /dev/ccci_pcm_rx		0660	media	media
