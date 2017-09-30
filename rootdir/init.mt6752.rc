@@ -49,24 +49,13 @@ on init
 
 # mount different fs start
 
-on charger
-    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
-    start fuelgauged
-    start kpoc_charger
-    start servicemanager
-
-    # disable USB
-    write /sys/devices/platform/mt_usb/cmode 0
-
 on fs
     write /proc/bootprof "INIT:Mount_START"
     mount_all /fstab.mt6752
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
-on fs
-
-   mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
+    mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
 
 on post-fs
     # Support legacy paths
@@ -172,6 +161,7 @@ on post-fs-data
     chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
+    write /sys/board_properties/tpd_suspend_status 2
 
     chmod 0666 /dev/pmem_multimedia
 
@@ -185,10 +175,7 @@ on post-fs-data
     mkdir /data/misc/rtc 0770 system system
 
     # M4U
-    #insmod /system/lib/modules/m4u.ko
-    #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
-    #chown system media /dev/M4U_device
 
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
@@ -257,7 +244,7 @@ on post-fs-data
     chown system system /sys/class/misc/m_batch_misc/batchbatch
     chown system system /sys/class/misc/m_batch_misc/batchflush
 
-	chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
     chmod 0660 /sys/class/misc/m_gyro_misc/gyroactive
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrodelay
     chmod 0660 /sys/class/misc/m_gyro_misc/gyrobatch
@@ -403,14 +390,11 @@ on post-fs-data
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
     #VideoCodec
-    #insmod /system/lib/modules/vcodec_kernel_driver.ko
     mknod /dev/Vcodec c 160 0
     chmod 0660 /dev/Vcodec
     chown media system /dev/Vcodec
 
     #MJC
-    #insmod /system/lib/modules/mjc_kernel_driver.ko
-    #mknod /dev/MJC c 168 0
     chmod 0660 /dev/MJC
     chown media system /dev/MJC
 
@@ -425,7 +409,7 @@ on post-fs-data
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_ut
 
     mkdir /data/amit/ 0770 system system
-		mkdir /data/misc/sensor 0774 system system
+    mkdir /data/misc/sensor 0774 system system
     mkdir /data/misc/akmd 0770 system system
     mkdir /data/misc/s62x 0771 compass compass
     mkdir /data/acdapi/ 0770 system system
@@ -437,7 +421,7 @@ on post-fs-data
     chown system /sys/devices/platform/msensor/driver/cpsreptz
     chown system /sys/devices/platform/gsensor/driver/cpsopmode
     chown system /sys/devices/platform/gsensor/driver/cpsrange
-    mkdir	/data/data/mcube 0664 system system
+    mkdir /data/data/mcube 0664 system system
 
     chown system /sys/class/input/input1/enable
     chown system /sys/class/input/input1/delay
@@ -479,9 +463,6 @@ on post-fs-data
     chown system /sys/class/input/input10/delay
     chown system /sys/class/input/input10/wake
     chown system /sys/class/input/input10/offsets
-
-    #EM eint
-    chown root diag /sys/bus/platform/drivers/eint/current_eint
 
     # Display
     chmod 0660 /dev/graphics/fb0
@@ -713,8 +694,8 @@ on post-fs-data
     # Recycle stuffs
     exec /system/bin/rm -f /cache/.ipoh.img
 
-	#Thermal	
-	mkdir /data/.tp/ 0775 system system
+    #Thermal	
+    mkdir /data/.tp/ 0775 system system
 
     #create directory /data/subt for subtitle
     mkdir /mnt/subt/ 0770 media media
@@ -723,7 +704,6 @@ on post-fs-data
 # -----------------------
 
 on boot
-
     # xlog
     #start xlogboot
 
@@ -733,6 +713,9 @@ on boot
     write /proc/sys/vm/dirty_ratio 10
 # lenovo-sw jiayh2 , modi vm emmc for ALPS02033794 end
     chmod 0660 /sys/power/autosleep
+
+# Power management settings
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
 
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 #lenovo.sw START wangsx3 add for leds sys node
@@ -873,11 +856,6 @@ service start_modem /system/bin/md_ctrl 1
 ## mtk printk uart controller
 on property:persist.uartconsole.enable=1
     write /proc/mtprintk 1
-
-# Update the second boot logo
-#service bootlogoupdater /system/bin/boot_logo_updater
-#    class core
-#    oneshot
 
 service mobile_log_d /system/bin/mobile_log_d
     class main
