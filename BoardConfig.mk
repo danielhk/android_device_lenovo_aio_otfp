@@ -85,6 +85,7 @@ BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp,aio_otfp_m,K3Note
+TARGET_CUSTOM_BINARY := device/lenovo/aio_otfp/configs/updater
 
 # recovery
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
