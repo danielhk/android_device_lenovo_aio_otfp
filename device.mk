@@ -144,15 +144,17 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service
 
+# FM Radio
+PRODUCT_PACKAGES += \
+    android.hardware.broadcastradio@1.0-impl \
+    FMRadio \
+    libfmjni
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.mt6752 \
     libcurl \
     YGPS
-
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
 
 # WiFi
 PRODUCT_PACKAGES += \
