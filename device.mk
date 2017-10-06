@@ -246,6 +246,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ril.log=0 \
     ro.disable.xlog=0
 
+# GPS force mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.force.gps.mode=gnss
+
 # Dalvik & hwui defaults
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
