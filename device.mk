@@ -179,6 +179,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl
 
+# Power HAL
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl
+
 # WiFi
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
