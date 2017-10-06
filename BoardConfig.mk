@@ -121,8 +121,8 @@ BOARD_USES_LEGACY_MTK_AV_BLOB := true
 BOARD_USES_MTK_AUDIO := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_CAMERA_STUB := true
-USE_MTK_CAMERA_WRAPPER := true
 BOARD_PROVIDES_RILD := true
+TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_mtk
 
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
