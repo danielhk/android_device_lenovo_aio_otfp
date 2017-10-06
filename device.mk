@@ -82,6 +82,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec.policy:system/vendor/etc/seccomp_policy/mediacodec.policy
 
+# SPN
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/spn-conf.xml:system/etc/spn-conf.xml
+
 # Custom charger images
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/charger/res/values/charger/animation.txt:root/res/values/charger/animation.txt \
