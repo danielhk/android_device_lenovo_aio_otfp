@@ -107,6 +107,13 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     SoundRecorder
 
+# Audio HAL
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.audio@2.0-service
+#    android.hardware.soundtrigger@2.0-impl \
+
 # RIL
 PRODUCT_PACKAGES += \
     libccci_util \
