@@ -11,8 +11,6 @@ service.wcn.driver.ready=no
 service.wcn.coredump.mode=2
 ro.mediatek.chip_ver=S01
 ro.mediatek.platform=MT6752
-ro.mediatek.version.sdk=4
-ro.mediatek.version.release=
 
 # performance
 ro.mtk_perf_simple_start_win=1
@@ -25,11 +23,10 @@ mediatek.wlan.module.postfix=_consys_mt6752
 ro.mediatek.wlan.wsc=1
 ro.mediatek.wlan.p2p=1
 wifi.interface=wlan0
-wifi.tethering.interface=ap0
 wifi.direct.interface=p2p0
 
 # Graphic
-debug.hwui.render_dirty_regions=false
+debug.hwui.profile=true
 drm.service.enabled=true
 persist.sys.lcd_density=480
 ro.opengles.version=196609
@@ -51,7 +48,6 @@ sys.ipo.pwrdncap=2
 fmradio.driver.enable=1
 ro.audio.silent=0
 ro.camera.sound.forced=0
-#ro.mtk_audenh_support=1
 ro.mtk_audio_tuning_tool_ver=V1
 ro.mtk_dual_mic_support=1
 ro.lenovo.audioparaver=K50-T5_Audio_Parameters_MP_CN_20160322
@@ -68,9 +64,7 @@ ro.mtk_omacp_support=1
 rild.libpath=mtk-ril.so
 rild.libargs=-d /dev/ttyC0
 ro.telephony.sim.count=2
-ro.telephony.ril_class=MediaTekRIL
 ro.telephony.ril.config=fakeiccid
-#ro.telephony.default_network=0,1
 
 persist.gemini.sim_num=2
 persist.radio.default.sim=0
@@ -81,7 +75,6 @@ persist.radio.fd.off.r8.counter=5
 persist.radio.multisim.config=dsds
 
 bgw.current3gband=0
-#mux.debuglog.enable=0
 ril.external.md=0
 ril.current.share_modem=2
 ril.first.md=1
@@ -92,7 +85,6 @@ ril.specific.sm_cause=0
 ril.telephony.mode=0
 
 keyguard.no_require_sim=true
-ro.com.android.dataroaming=true
 ro.gemini.smart_sim_switch=false
 ro.mediatek.gemini_support=true
 ro.mtk_eap_sim_aka=1
@@ -100,8 +92,6 @@ ro.mtk_enable_md1=1
 ro.mtk_fd_support=1
 ro.mtk_pq_support=2
 ro.mtk_sim_hot_swap=1
-ro.mtk_world_phone=1
-ro.mtk_world_phone_policy=0
 ro.mtk_lte_support=1
 ro.sim_me_lock_mode=0
 ro.sim_refresh_reset_by_modem=1
