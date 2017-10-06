@@ -95,16 +95,34 @@ PRODUCT_COPY_FILES += \
 
 #### PACKAGES ####
 
-# MTK Helpers
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.r_submix.default \
+    audio.usb.default \
+    libaudio-resampler \
+    libtinyalsa \
+    libtinycompress \
+    libtinymix \
+    libtinyxml \
+    SoundRecorder
+
+# RIL
 PRODUCT_PACKAGES += \
     libccci_util \
-    libcam.halsensor \
-    libgralloc_extra \
-    libgui_ext \
+    librilmtk \
+    mtkrild
+
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory \
+    libemoji \
+    libnl_2
+
+# MTK Helpers
+PRODUCT_PACKAGES += \
     libion \
-    lights.mt6752 \
-    libui_ext \
-    libwvmsym
+    libwvmsym \
+    libiodev
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -115,23 +133,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
-
-# Extra packages
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.r_submix.default \
-    audio.usb.default \
-    com.android.future.usb.accessory \
-    libaudio-resampler \
-    libemoji \
-    libfmjni \
-    libnl_2 \
-    libtinyalsa \
-    libtinycompress \
-    libtinymix \
-    libtinyxml
-
-PRODUCT_TAGS += dalvik.gc.type-precise
 
 # WiFi
 PRODUCT_PACKAGES += \
