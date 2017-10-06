@@ -1,3 +1,6 @@
+# Lineage-15.0
+# 20171006 - Migrate to Lineage-15.0
+#	- daniel_hk (danielhk@github.com)
 # Release name
 PRODUCT_RELEASE_NAME := K3Note
 
@@ -12,14 +15,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
 
-# Inherit CM's custom product configuration
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit Lineage's custom product configuration
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Call device specific makefile
 $(call inherit-product, device/lenovo/aio_otfp/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := cm_aio_otfp
+PRODUCT_NAME := lineage_aio_otfp
 PRODUCT_DEVICE := aio_otfp
 PRODUCT_BRAND := Lemon
 PRODUCT_MODEL := K3Note
