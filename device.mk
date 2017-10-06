@@ -131,6 +131,12 @@ PRODUCT_PACKAGES += \
     libwvmsym \
     libiodev
 
+# Bluetooth
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl \
+    android.hardware.bluetooth@1.0-service \
+    libbt-vendor
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.mt6752 \
