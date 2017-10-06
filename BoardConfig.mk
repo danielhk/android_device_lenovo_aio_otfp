@@ -122,7 +122,6 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_CAMERA_STUB := true
 USE_MTK_CAMERA_WRAPPER := true
 BOARD_PROVIDES_RILD := true
-BOARD_RIL_CLASS := ../../../device/lenovo/aio_otfp/ril
 
 TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
