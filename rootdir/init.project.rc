@@ -35,12 +35,12 @@ on post-fs-data
 #    chmod 0660 /dev/stpwmt
 #    chown system system /dev/stpwmt
 
-#    chmod 0660 /dev/wmtdetect
-#    chown system system /dev/wmtdetect
+    chmod 0660 /dev/wmtdetect
+    chown wifi wifi /dev/wmtdetect
 
     mknod /dev/wmtWifi c 153 0
     chmod 0660 /dev/wmtWifi
-    chown system system /dev/wmtWifi
+    chown wifi wifi /dev/wmtWifi
 
 #Camera
     chmod 0660 /dev/GAF001AF
@@ -155,9 +155,9 @@ restorecon /sys/devices/platform/battery/power_supply/battery/charging_led_flag
 #   insmod /system/lib/modules/wlan_mt.ko
 
 # Char device for BT 3.0 HS
-    mknod /dev/ampc0 c 151 0
-    chown bluetooth bluetooth /dev/ampc0
-    chmod 0660 /dev/ampc0
+#    mknod /dev/ampc0 c 151 0
+#    chown bluetooth bluetooth /dev/ampc0
+#    chmod 0660 /dev/ampc0
 
 #
 # Connectivity related device nodes & configuration (end)
@@ -228,7 +228,7 @@ service audio-daemon /system/bin/audiocmdservice_atci
 
 service wmtLoader /system/bin/wmt_loader
     user root
-    group root
+    group root system wifi
     class core
     oneshot
 
