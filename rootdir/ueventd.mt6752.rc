@@ -17,13 +17,13 @@
 
 #connectivity
 /dev/stpwmt			0660	system	system
-/dev/wmtdetect			0660	system	system
-/dev/stpbt			0660	bluetooth	net_bt_stack
+/dev/wmtdetect			0660	wifi	wifi
+/dev/stpbt			0660	bluetooth	bluetooth
 /dev/stpgps			0660	gps	gps
 /dev/stpant			0660	system	system
 
 #wifi
-/dev/wmtWifi			0660	system	system
+/dev/wmtWifi			0660	wifi	wifi
 
 # FMRadio
 /dev/fm				0660	media	media
@@ -44,18 +44,8 @@
 /dev/ttyC*			0660	radio	radio
 /sys/kernel/ccci/debug		0660	radio	radio
 /sys/kernel/ccci/md_en		0660	radio	radio
-/dev/eemcs*			0660	radio	radio
-/dev/emd*			0660	radio	radio
-/dev/ccci_pcm_rx		0660	media	media
-/dev/ccci_pcm_tx		0660	media	media
 /dev/ccci_aud			0660	media	media
-/dev/ccci2_aud			0660	media	media
-/dev/eemcs_aud			0660	media	media
 /dev/tfa9897			0660	media	media
-
-# SGX device node
-/dev/pvrsrvkm			0666	root	root
-/dev/pvr_sync			0666	root	root
 
 # LED device
 /sys/devices/platform/leds-mt65xx/leds/green/brightness		0664	system	system
@@ -69,14 +59,10 @@
 /dev/mtgpio			0600	radio	root
 
 #MTK BTIF driver
-/dev/btif			0600	system	system
-
-#FOR VIA MODEM
-/dev/ttySDIO*			0660	radio	sdcard_rw
-/dev/ttyRB*			0660	radio	radio
+/dev/btif			0600	system	bluetooth
 
 # Mali node
-/dev/mali			0666	system	graphics
+/dev/mali*			0666	system	graphics
 
 #touch
 /dev/touch			0660	root	system
@@ -84,7 +70,5 @@
 
 #hang_detect
 /dev/RT_Monitor			0600	system	system
-/dev/kick_powerkey		0600	system	system
+#/dev/kick_powerkey		0600	system	system
 
-#MTK In-House TEE
-/dev/ttyACM0			0660	radio	radio
