@@ -1,0 +1,14 @@
+animation: 3 2 my_battery_scale
+percent_display: c 1400 100 240 240 255 font_log
+frame: 750 0 9
+frame: 750 0 19
+frame: 750 0 29
+frame: 750 0 39
+frame: 750 0 49
+frame: 750 0 59
+frame: 750 0 69
+frame: 750 0 79
+frame: 750 0 89
+frame: 750 0 95
+frame: 750 0 100
+

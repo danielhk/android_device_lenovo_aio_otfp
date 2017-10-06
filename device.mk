@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The OmniROM Project
+# Copyright (C) 2017 The Lineage Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# 20171001 - Oero port - daniel_hk (danielhk@github.com)
 
 # call the proprietary setup
 $(call inherit-product, vendor/lenovo/aio_otfp/aio_otfp-vendor.mk)
@@ -151,6 +152,12 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.camera.manual_sensor.xml:system/etc/permissions/android.hardware.camera.manual_sensor.xml
+
+# Custom charger images
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/charger/res/values/charger/animation.txt:root/res/values/charger/animation.txt \
+    $(LOCAL_PATH)/charger/res/images/my_battery_scale.png:root/res/images/my_battery_scale.png \
+    $(LOCAL_PATH)/charger/res/images/font_log.png:root/res/images/font_log.png
 
 # Dalvik & hwui defaults
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
