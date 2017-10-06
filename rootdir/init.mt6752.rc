@@ -12,7 +12,8 @@ on early-init
 
 on init
     # Support legacy paths
-    symlink /sdcard /mnt/sdcard
+    #symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
     # if primary storage is physical, set ro.vold.primary_physical to 1
     # setprop ro.vold.primary_physical 1
@@ -25,35 +26,25 @@ on init
     mkdir /protect_s 0771 system system
     #create mountpoint for persist partition
     mkdir /persist 0771 system system
-# Create CIP mount point
+    # Create CIP mount point
     mkdir /custom
 
     chmod 0666 /dev/kmsg
 
     mkdir /mnt/cd-rom 0000 system system
 
-# Change ION driver permission
+    # Change ION driver permission
     chmod 0666 /dev/ion
 
-# change lk_env permission
+    # change lk_env permission
     chown root system /proc/lk_env
     chmod 0660 /proc/lk_env
 
-# increase sysctl_rmem_max and sysctl_wmem_max values to 2M
+    # increase sysctl_rmem_max and sysctl_wmem_max values to 2M
     write /proc/sys/net/core/wmem_max 2097152
     write /proc/sys/net/core/rmem_max 2097152
 
 # mount different fs start
-
-on charger
-    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
-    start fuelgauged
-    start kpoc_charger
-    start servicemanager
-
-    # disable USB
-    write /sys/devices/platform/mt_usb/cmode 0
-
 on fs
     write /proc/bootprof "INIT:Mount_START"
     mount_all /fstab.mt6752
@@ -81,7 +72,7 @@ on post-fs
     chown radio system /proc/freqhopping/status
     chown radio system /proc/freqhopping/userdef
 
-# change owner
+    # change owner
     chown system system /proc/bootprof
     chown root system /proc/mtprof/cputime
     chown root system /proc/mtprof/reboot_pid
@@ -164,7 +155,7 @@ on post-fs-data
     chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
     chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
-    write /sys/board_properties/tpd_suspend_status 2
+    #write /sys/board_properties/tpd_suspend_status 2
 
     chmod 0666 /dev/pmem_multimedia
 
@@ -393,8 +384,7 @@ on post-fs-data
     chown root radio /sys/devices/platform/Accdet_Driver/driver/accdet_call_state
 
     #VideoCodec
-    mknod /dev/Vcodec c 160 0
-    chmod 0660 /dev/Vcodec
+    chmod 0666 /dev/Vcodec
     chown media system /dev/Vcodec
 
     #MJC
@@ -511,26 +501,26 @@ on post-fs-data
     chmod 0664 /proc/cpu_ss/cpu_ss_period_mode
 
     # for ppp options file
-    mkdir /data/misc/ppp 0770 bluetooth net_bt
+    mkdir /data/misc/ppp 0770 bluetooth bluetooth
 
     # Android SEC related device nodes
     chmod 0660 /dev/sec
     chown root system /dev/sec
 
     # FM Radio device node
-    mknod /dev/fm     c 193 0;
+    mknod /dev/fm	c 193 0;
     chmod 0660 /dev/fm
     chown media media /dev/fm
 
     # device apc settings
 
     # device info /proc interface
-    mknod /dev/devmap c 196 0;
+    mknod /dev/devmap	c 196 0;
     chmod 0444 /dev/devmap
     chown root media /dev/devmap
 
     # bluetooth
-    mkdir /data/@btmtk 0770 bluetooth net_bt
+    mkdir /data/@btmtk 0770 bluetooth bluetooth
     chown bluetooth bluetooth /dev/hid-keyboard
     chmod 0660 /dev/hid-keyboard
     #Use uinput's default permission
@@ -625,7 +615,7 @@ on post-fs-data
     chmod 0640 /mtd@recovery
     chown root system /mtd@recovery
 
-    chmod 0660 /mtd@nvram
+    chmod 0666 /mtd@nvram
     chown root system /mtd@nvram
 
     chmod 0660 /mtd@seccfg
@@ -634,7 +624,7 @@ on post-fs-data
     chmod 0660 /mtd@misc
     chown root system /mtd@misc
 
-    chmod 0664 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
+    chmod 0666 /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
     chown system media /sys/bus/platform/drivers/mem_bw_ctrl/concurrency_scenario
 
     #mtk_sched
@@ -745,19 +735,19 @@ on boot
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
 
-# Smartbook Handler Framework
+    # Smartbook Handler Framework
     chown system system /sys/power/sb_state
     chmod 0660 /sys/power/sb_state
 
-# HMP CPU hotplug strategy
+    # HMP CPU hotplug strategy
     chown system system /proc/hps/num_base_perf_serv
     chmod 0660 /proc/hps/num_base_perf_serv
     chown system system /proc/hps/num_limit_power_serv
     chmod 0660 /proc/hps/num_limit_power_serv
     chown system system /proc/hps/num_limit_ultra_power_saving
     chmod 0660 /proc/hps/num_limit_ultra_power_saving
-    
-# CPU freq
+
+    # CPU freq
     chown system system /proc/cpufreq/cpufreq_limited_by_hevc
     chmod 0660 /proc/cpufreq/cpufreq_limited_by_hevc
     chown system system /proc/cpufreq/cpufreq_limited_max_freq_by_user
@@ -783,26 +773,20 @@ on boot
     chown root radio /proc/net/netfilter/nfnetlink_log
     chown root radio /proc/net/netfilter/nfnetlink_queue
 
-# WMT proc
+    # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
 
-#Define device for ATCID
-    chmod 0660 /dev/ttyGS0
-    chown system /dev/ttyGS0
-    chmod 0660 /dev/ttyGS1
-    chown system /dev/ttyGS1
-
-# BT relayer mode USB VCOM
+    # BT relayer mode USB VCOM
     chmod 0660 /dev/ttyGS2
     chown bluetooth radio /dev/ttyGS2
 
-# define device for EMCSMDLOGGER
+    # define device for EMCSMDLOGGER
     chmod 0660 /dev/ttyGS3
     chown system radio /dev/ttyGS3
 
-# Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    # Define TCP buffer sizes for various networks
+    #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,524288
     setprop net.tcp.buffersize.wifi    524288,1048576,2097152,262144,524288,1048576
     setprop net.tcp.buffersize.lte     524288,1048576,2097152,262144,524288,1048576
@@ -815,6 +799,7 @@ on boot
     setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
 
     setprop persist.sys.strictmode.disable 1
+#    setprop hwservicemanager.ready true
 
 on property:vold.decrypt=trigger_reset_main
     start stop_modem
@@ -857,16 +842,13 @@ on property:debug.MB.prdebug=1
 on property:debug.MB.prdebug=0
     write /sys/kernel/debug/dynamic_debug/control "file *mediatek* -p"
 
-service met_log_d /system/bin/met_log_d
-    class main
-
 # bugreport is triggered by holding down volume down, volume up and power
-service bugreport /system/bin/dumpstate -d -p -B \
-        -o /data/data/com.android.shell/files/bugreports/bugreport
-    class main
-    disabled
-    oneshot
-    keycodes 114 115 116
+#service bugreport /system/bin/dumpstate -d -p -B \
+#    -o /data/data/com.android.shell/files/bugreports/bugreport
+#    class main
+#    disabled
+#    oneshot
+#    keycodes 114 115 116
 
 on property:sys.boot_completed=1
     start gas_srv
@@ -884,7 +866,14 @@ service netdiag /system/bin/netdiag
 service nvram_daemon /system/bin/nvram_daemon
     class main
     user root
-    group system
+    group root system
+    oneshot
+
+service audio-daemon /system/bin/audiocmdservice_atci
+    class main
+    socket atci-audio stream 660 root system
+    user root
+    disabled
     oneshot
 
 service pq /system/bin/pq
@@ -892,7 +881,7 @@ service pq /system/bin/pq
     user system
     group system graphics
 
-service p2p_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf -N \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf -e/data/misc/wifi/entropy.bin -dd \
@@ -902,20 +891,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     #   after setting up the capabilities required for WEXT
     #   user wifi
     #   group wifi inet keystore
-    class main
-    socket wpa_wlan0 dgram 660 wifi wifi
-    disabled
-    oneshot
-
-service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin -dd \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
-    class main
+    class late_start
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
@@ -1036,61 +1012,23 @@ on property:gsm.sim.ril.testsim.4=1
 
 service DMAgent /system/bin/dm_agent_binder
     class main
-    user system
-    group system cache
+    user root
+    group root system cache
 
 service PPLAgent /system/bin/ppl_agent
     class main
-    user system
-    group system cache
-
-service vtservice /system/bin/vtservice
-    class main
-    socket soc_vt_tcv dgram 660 radio system
-    socket soc_vt_stk dgram 660 radio system
-    socket soc_vt_svc dgram 660 radio system
     user root
-    group camera graphics media sdcard_rw radio sdcard_r media_rw
-    ioprio rt 4
+    group root system cache
 
-service cmmb /system/bin/cmmbsp
-    class main
-    user root
-    group system audio camera graphics inet net_bt net_bt_admin net_bw_acct media
-    ioprio rt 4
-
-service enableswap /system/bin/sh /enableswap.sh
-    class late_start
-    oneshot
-    seclabel u:r:enableswap:s0
+#service enableswap /system/bin/sh /enableswap.sh
+#    class late_start
+#    oneshot
+#    seclabel u:r:enableswap:s0
 
 service swapoff_action /system/bin/sh /disableswap.sh
     class main
     disabled
     oneshot
-
-service dbus /system/bin/dbus-daemon --system --nofork
-    class main
-    socket dbus stream 660 bluetooth bluetooth
-    user bluetooth
-    group bluetooth net_bt_admin
-
-service bluetoothd /system/bin/bluetoothd -n
-    class main
-    socket bluetooth stream 660 bluetooth bluetooth
-    socket dbus_bluetooth stream 660 bluetooth bluetooth
-    # init.rc does not yet support applying capabilities, so run as root and
-    # let bluetoothd drop uid to bluetooth with the right linux capabilities
-    group bluetooth net_bt_admin misc
-    disabled
-
-#service dpfd /system/bin/dpfd
-#	user root
-#	group system media
-
-#service agpsdcainit /system/bin/agpscacertinit
-#    class main
-#    oneshot
 
 service agpsd /system/bin/mtk_agpsd
     class main
@@ -1098,7 +1036,7 @@ service agpsd /system/bin/mtk_agpsd
     socket agpsd2 stream 660 gps inet
     socket agpsd3 stream 660 gps inet
     user gps
-    group gps radio inet sdcard_r sdcard_rw misc
+    group gps radio inet sdcard_r sdcard_rw misc system
 
 service slpd /system/bin/slpd
     class main
@@ -1128,13 +1066,6 @@ service mdlogger /system/bin/mdlogger
     disabled
     oneshot
 
-service emdlogger1 /system/bin/emdlogger1
-    class main
-    user shell
-    group system shell radio sdcard_rw inet sdcard_r media_rw
-    disabled
-    oneshot
-
 #
 #sensor service (begin)
 #
@@ -1148,23 +1079,25 @@ service s62xd /system/bin/s62xd
     user compass
     group system
     class main
+
 service ami304d /system/bin/ami304d
+    disabled
     user system
     group system
-    disabled
     class main
 
 service memsicd /system/bin/memsicd
-     disabled
+    disabled
     user system
     group system
     class main
 
 service memsicd3416x /system/bin/memsicd3416x
-     disabled
-	 user system
+    disabled
+    user system
     group system
     class main
+
 service akmd8975 /system/bin/akmd8975
     disabled
     user system
@@ -1177,8 +1110,7 @@ service akmd8963 /system/bin/akmd8963
     group system
     class main
 
-#lenovo-sw, shanghai, add by molg1, for msensor, 20141011
-service akmd09911 /system/bin/akmd09911 -p 0
+service akmd09911 /system/bin/akmd09911
     disabled
     user system
     group system
@@ -1195,6 +1127,7 @@ service bmm056d /system/bin/bmm056d
     user system
     group system
     class main
+
 service mc6420d /system/bin/mc6420d
     disabled
     user system
@@ -1206,6 +1139,7 @@ service orientationd /system/bin/orientationd
     user system
     group system input
     class main
+
 service AcdApiDaemon /system/bin/AcdApiDaemon
     disabled
     user system
@@ -1237,12 +1171,12 @@ on property:ro.build.type=userdebug
 service emsvr_user /system/bin/em_svr
     disabled
     user system
-    group system radio diag net_bt_stack
+    group system radio diag bluetooth
 
 service emsvr /system/bin/em_svr
     disabled
     user root
-    group net_bt_stack
+    group bluetooth
 
 #
 #emsvr service (end)
@@ -1255,7 +1189,7 @@ service shutdown /system/bin/shutdown
 
 service NvRAMAgent /system/bin/nvram_agent_binder
     class main
-    user system
+    user root
     group system
 
 service thermal_manager /system/bin/thermal_manager
@@ -1275,20 +1209,13 @@ service thermald /system/bin/thermald
 
 service fuelgauged /system/bin/fuelgauged
     class main
-    user system
-    group system
+    user root
+    group root
 
 service sn /system/bin/sn
     class late_start
     user system
     group system sdcard_rw
-    oneshot
-
-#add for power-off alarm
-service poad /system/bin/poad
-    class main
-    user system
-    group system
     oneshot
 
 #monitor battery status
@@ -1297,28 +1224,26 @@ service batterywarning /system/bin/batterywarning
     user shell
     group shell
 
-service backuprestore /system/bin/br_app_data_service
-	class main
-	socket backuprestore stream 0660 root sdcard_rw
-	user root
-
-#service BGW /system/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 service MtkCodecService /system/bin/MtkCodecService
     class main
     user system
-    group audio media sdcard_r
+    group audio camera media sdcard_r
 
 # GuiExt Server init
 service guiext-server /system/bin/guiext-server
-    class main
-    user system
-    group system graphics
+    class core
+    user root
+    group system graphics media
 
-service kpoc_charger /system/bin/kpoc_charger
+#service kpoc_charger /system/bin/kpoc_charger
+#    class charger
+#    user root
+
+service battery_charger /charger
     class charger
+    user root
+    critical
+    seclabel u:r:healthd:s0
 
 ###########add for 3Gdongle
 
@@ -1326,8 +1251,8 @@ on boot
 #
 # change the right of ip-up ip-down scripts(begin)
 #
-chmod 777 /etc/ppp/ip-up
-chmod 777 /etc/ppp/ip-down
+    chmod 777 /etc/ppp/ip-up
+    chmod 777 /etc/ppp/ip-down
 #
 # change the right of ip-up ip-down scripts(end)
 #
@@ -1335,75 +1260,26 @@ chmod 777 /etc/ppp/ip-down
 #
 # change the right of ip-up-ppp0 ip-down-ppp0 scripts(begin)
 #
-chmod 777 /etc/ppp/ip-up-ppp0
-chmod 777 /etc/ppp/ip-down-ppp0
+    chmod 777 /etc/ppp/ip-up-ppp0
+    chmod 777 /etc/ppp/ip-down-ppp0
 #
 # change the right of ip-up ip-down scripts(end)
 #
 
 #set the property of persiste.radio.reset_on_switch
-setprop persist.radio.reset_on_switch true
+    setprop persist.radio.reset_on_switch true
 #end
 
 #set the property of rild.mark_switchuser
-setprop rild.mark_switchuser 0
+    setprop rild.mark_switchuser 0
 #end
 
-chmod 0644 /system/lib/libzteevdo-ril.so
-chmod 0644 /system/lib/zterilPara
-chown root /system/bin/pppd
-chmod 4755 /system/bin/pppd
-chown root /system/bin/chat
-chmod 4755 /system/bin/chat
-
-#
-#ril-daemon (begin)
-#
-service ril-3gddaemon /system/bin/rild_dongle
-    class main
-    socket rild-dongle stream 660 root radio
-    socket rild-dongle-debug stream 660 radio radio
-    user root
-    group radio cache inet misc audio log
-    disabled
-
-#
-#ril-daemon (end)
-#
-
-#
-#usbdongled(begin)
-#
-service usbdongled /system/bin/dongled
-    class main
-	user root
-	group radio cache inet misc
-	enable
-#
-#usbdongled(end)
-#
-
-#
-# add the service for call pppd(begin)
-#
-service zpppd_gprs /system/bin/init.gprs-pppd
-    user root
-	group radio cache inet misc
-	disabled
-	oneshot
-#
-# add the service for call pppd(end)
-#
-
-# Program binary service
-service program_binary /system/bin/program_binary_service
-    class late_start
-    user system
-    group graphics
-    oneshot
+    chown root /system/bin/pppd
+    chmod 4755 /system/bin/pppd
 
 # Lenovo wuzb1 2016-01-11 drop kvm caches interface
 on property:sys.vm.drop_caches=*
+    sync
     write /proc/sys/vm/drop_caches ${sys.vm.drop_caches}
 
 #lenovo-sw jixj 2014.1.3 add begin for customsn
