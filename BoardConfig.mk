@@ -18,8 +18,6 @@
 -include vendor/lenovo/aio_otfp/BoardConfigVendor.mk
 
 LOCAL_PATH := device/lenovo/aio_otfp
- 
-MTK_K64_SUPPORT := yes
 
 # Platform
 TARGET_BOARD_PLATFORM := mt6752
