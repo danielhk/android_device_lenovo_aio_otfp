@@ -47,3 +47,6 @@ allow sn property_socket:sock_file write;
 allow sn init:unix_stream_socket { connectto };
 allow sn rootfs:lnk_file { getattr };
 
+# O
+allow sn proc:file { read open ioctl };
+

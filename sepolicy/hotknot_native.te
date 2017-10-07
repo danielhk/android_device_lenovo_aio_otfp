@@ -17,7 +17,7 @@ init_daemon_domain(hotknot_native)
 # Purpose : Add for HotKnot 3.5 native service
 binder_service(hotknot_native)
 binder_use(hotknot_native)
-binder_call({domain -init}, hotknot_native)
+#binder_call({domain -init}, hotknot_native)
 
 # Purpose : To allow register hotknot_native_service in servicemanager.
 allow hotknot_native hotknot_native_service:service_manager { add find };
@@ -39,8 +39,8 @@ allow hotknot_native graphics_device:dir search;
 allow hotknot_native hotknot_prop:property_service set;
 allow hotknot_native init:unix_stream_socket connectto;
 allow hotknot_native property_socket:sock_file { write read };
-allow hotknot_native system_app_data_file:dir { write search add_name };
-allow hotknot_native system_app_data_file:file { read write open getattr create };
+#allow hotknot_native system_app_data_file:dir { write search add_name };
+#allow hotknot_native system_app_data_file:file { read write open getattr create };
 # Date : 2015/9/23
 # Operation : New
 # Purpose : To allow read wifi mac address from nvram.

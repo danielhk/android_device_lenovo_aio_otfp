@@ -39,8 +39,8 @@ allow ril-3gddaemon ctl_zpppdgprs_prop:property_service set;
 allow ril-3gddaemon tty_device:chr_file rw_file_perms;
 
 # Allow ril-3gddaemon to create and use netlink sockets.
-allow ril-3gddaemon self:netlink_socket create_socket_perms;
-allow ril-3gddaemon self:netlink_kobject_uevent_socket create_socket_perms;
+#allow ril-3gddaemon self:netlink_socket create_socket_perms;
+#allow ril-3gddaemon self:netlink_kobject_uevent_socket create_socket_perms;
 
 allow ril-3gddaemon init:dir { getattr open read search };
 allow ril-3gddaemon ppp_exec:file { read open getattr execute execute_no_trans };
@@ -50,4 +50,4 @@ allow ril-3gddaemon device:dir { read open write};
 # Access to wake locks
 wakelock_use(ril-3gddaemon)
 
-allow ril-3gddaemon self:socket create_socket_perms;
+#allow ril-3gddaemon self:socket create_socket_perms;

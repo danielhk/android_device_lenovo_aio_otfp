@@ -7,7 +7,7 @@
 # Operation : Migration 
 # Purpose : for MTK boot performance profiling, for access /proc/bootprof
 allow zygote devmap_device:chr_file { read ioctl open };
-allow zygote proc:file write;
+#allow zygote proc:file write;
 
 # Date : WK14.34
 # Operation : Migration 
@@ -39,7 +39,7 @@ allow zygote platform_app:fd use;
 # Date : WK14.44
 # Operation : SQC
 # Purpose : found in WLAN test (ALPS01784932)
-allow zygote platform_app_tmpfs:file write;
+#allow zygote platform_app_tmpfs:file write;
 
 # Date : WK14.46
 # Operation : SQC
@@ -54,7 +54,7 @@ allow zygote isolated_app:fd use;
 # Date : WK15.02
 # Operation : SQC
 # Purpose : for Chrome search (ALPS01897864)
-allow zygote isolated_app_tmpfs:file write;
+#allow zygote isolated_app_tmpfs:file write;
 
 # Date : WK15.02
 # Operation : SQC
@@ -64,14 +64,18 @@ allow zygote untrusted_app:fd use;
 # Date : WK15.03
 # Operation : SQC
 # Purpose : for FB webpage loading
-allow zygote untrusted_app_tmpfs:file write;
+#allow zygote untrusted_app_tmpfs:file write;
 
 # Date : WK15.08
 # Operation : SQC
 # Purpose : for TTLIA
 allow zygote radio:fd use;
-allow zygote radio_tmpfs:file create_file_perms;
+#allow zygote radio_tmpfs:file create_file_perms;
 
 # Nougat
 allow zygote persist_ril_prop:file { read open getattr };
+
+# O
+#allow zygote serialno_prop:file { read open getattr };
+allow zygote proc:file { read write ioctl open getattr };
 

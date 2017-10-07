@@ -25,7 +25,7 @@ allow netd mtk_wifi_prop:property_service set;
 # Operation : Migration
 # Purpose :   APP 
 allow netd platform_app:fd use;
-allow netd platform_app_tmpfs:file write;
+#allow netd platform_app_tmpfs:file write;
 
 
 # Date : WK14.37
@@ -83,7 +83,7 @@ allow netd self:capability { setuid setgid };
 
 
 #============= netd ==============
-allow netd isolated_app_tmpfs:file write;
+#allow netd isolated_app_tmpfs:file write;
 
 # Date : W14.52
 # Operation : Migration
@@ -93,7 +93,7 @@ allow netd ipsec:tcp_socket { read write setopt getopt };
 
 #============= netd ==============
 allow netd untrusted_app:fd use;
-allow netd untrusted_app_tmpfs:file write;
+#allow netd untrusted_app_tmpfs:file write;
 
 #============= netd ==============
 # Date : W14.53
@@ -114,7 +114,7 @@ allow netd isolated_app:fd use;
 
 
 #============= netd ==============
-allow netd radio_tmpfs:file write;
+#allow netd radio_tmpfs:file write;
 
 # Date : W15.28
 # Operation : Migration
@@ -130,4 +130,8 @@ allow netd volte_ua:udp_socket {read write setopt getopt};
 allow netd wifi_data_file:dir { create setattr };
 allow netd dhcp_data_file:dir { setattr };
 allow netd wifi_data_file:sock_file { create setattr unlink };
+
+# O
+allow netd rootfs:lnk_file { getattr };
+allow netd system_file:file { lock };
 

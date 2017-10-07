@@ -83,7 +83,7 @@ allow mediaserver Vcodec_device:chr_file { read write ioctl open };
 # Operation : Migration
 # Purpose : MMProfile debug
 # userdebug_or_eng(`
-allow mediaserver debugfs:file {read ioctl getattr};
+#allow mediaserver debugfs:file {read ioctl getattr};
 # ')
 
 # Date : WK14.36
@@ -343,7 +343,7 @@ allow mediaserver proc_secmem:file { read write open};
 # Data : WK14.48
 # Operation : WFD
 # Purpose : For WFD scenario
-allow mediaserver untrusted_app_tmpfs:file write;
+#allow mediaserver untrusted_app_tmpfs:file write;
 
 # Date : WK14.49
 # Operation : WFD
@@ -375,7 +375,7 @@ allow mediaserver offloadservice_device:chr_file { read write ioctl open };
 # Date : WK15.30
 # Operation : Migration
 # Purpose : for device bring up, not to block early migration/sanity
-allow mediaserver system_file:file execmod;
+#allow mediaserver system_file:file execmod;
 allow mediaserver guiext-server_service:service_manager find;
 
 # Date : WK15.31
@@ -435,7 +435,7 @@ allow mediaserver vtservice:fd use;
 allow mediaserver pq_service:service_manager { find };
 
 # Nougat
-allow mediaserver device:chr_file { read write open ioctl };
+#allow mediaserver device:chr_file { read write open ioctl };
 allow mediaserver mediatek_prop:file { read open getattr };
 allow mediaserver proc:file { read open ioctl };
 allow mediaserver sysfs:file { read open };

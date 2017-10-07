@@ -91,7 +91,7 @@ allow emdlogger vfat:file create_file_perms;
 #=========================================================
 #modem logger permission in storage in android M version
 #=========================================================
-allow emdlogger log_device:chr_file { write open };
+#allow emdlogger log_device:chr_file { write open };
 allow emdlogger mnt_user_file:dir search;
 allow emdlogger mnt_user_file:lnk_file read;
 #allow emdlogger storage_file:dir search;

@@ -67,9 +67,9 @@ allow init tmpfs:lnk_file create;
 # Date : WK15.32
 # Operation : Migration
 # Purpose : disable AT_SECURE for LD_PRELOAD
-userdebug_or_eng(`
-  allow init { domain -lmkd }:process noatsecure;
-')
+#userdebug_or_eng(`
+#  allow init { domain -lmkd }:process noatsecure;
+#')
 
 # Date : WK15.33
 # Operation : Migration
@@ -100,9 +100,4 @@ allow init property_socket:sock_file write;
 allow init loop_device:blk_file { write };
 allow init block_device:lnk_file setattr;
 allow init debugfs:file { write };
-allow init null_device:chr_file { read write };
-allow init properties_serial:file { getattr read open };
-allow init self:file write;
-allow init self:unix_stream_socket { accept getopt listen read write };
-allow init self:fd use;
 

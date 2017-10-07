@@ -5,16 +5,16 @@
 # Date : WK14.37
 # Operation : Migration 
 # Purpose : Access 'OMADM_USB' nvram
-allow vold nvram_data_file:file { read getattr open write create setattr};
+#allow vold nvram_data_file:file { read getattr open write create setattr};
 allow vold nvram_data_file:lnk_file read;
-allow vold nvram_data_file:dir { read open write add_name create getattr setattr search};
+#allow vold nvram_data_file:dir { read open write add_name create getattr setattr search};
 allow vold nvdata_file:file { read getattr open write create setattr};
-allow vold nvdata_file:dir { read ioctl open write add_name create getattr setattr search};
+#allow vold nvdata_file:dir { read ioctl open write add_name create getattr setattr search};
 allow vold nvram_device:chr_file { read write open };
 #allow vold platformblk_device:blk_file { read write open };
 #allow vold platformblk_device:dir search;
 allow vold nvram_device:blk_file rw_file_perms;
-allow vold userdata_block_device:blk_file create_file_perms;
+#allow vold userdata_block_device:blk_file create_file_perms;
 allow vold para_block_device:blk_file rw_file_perms;
 allow vold misc2_block_device:blk_file rw_file_perms;
 allow vold mmcblk0_block_device:blk_file rw_file_perms;
@@ -38,7 +38,7 @@ allow vold zram0_device:blk_file getattr;
 # Date : WK14.38
 # Operation : Migration 
 # Purpose : symbolic link for /data/ext_sdcard_tool
-allow vold system_data_file:lnk_file { create unlink };
+#allow vold system_data_file:lnk_file { create unlink };
 
 # Date : WK14.40
 # Operation : Migration 
@@ -67,7 +67,7 @@ allow vold media_rw_data_file:dir { read open };
 
 # Date : WK14.46
 # Operation : allow sdcard create tmpfs link file
-allow vold tmpfs:lnk_file {create unlink};
+#allow vold tmpfs:lnk_file {create unlink};
 
 # Date : WK14.46
 # Operation : copy the logs in /data(tmpfs) to real userdata partition
@@ -154,14 +154,7 @@ allow vold mobicore_user_device:chr_file { read write ioctl open };
 
 # Date : WK15.52
 # Operation : create symbolic link for /storage/sdcard1
-allow vold storage_file:lnk_file {create unlink};
+#allow vold storage_file:lnk_file {create unlink};
 
-# Nougat
-allow vold init:fd use;
-allow vold null_device:chr_file { read write open };
-allow vold self:unix_stream_socket { read write };
-allow vold urandom_device:chr_file { read getattr ioctl open };
-allow vold properties_device:dir getattr;
-allow vold property_contexts:file { getattr read open };
-allow vold properties_serial:file { getattr read open };
-
+# O
+allow vold system_data_file:lnk_file { create getattr unlink };

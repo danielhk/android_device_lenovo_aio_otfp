@@ -4,7 +4,7 @@ type init_thh_service_exec, exec_type, file_type;
 
 allow teei_daemon self:capability sys_module;
 allow init_thh_service teei_config_device:chr_file rw_file_perms;
-allow init_thh_service teei_client_device:chr_file create_file_perms;
+#allow init_thh_service teei_client_device:chr_file create_file_perms;
 allow init_thh_service teei_data_file:dir create_dir_perms;
 allow init_thh_service teei_data_file:file rw_file_perms;
 allow init_thh_service teei_data_file:file create_file_perms;

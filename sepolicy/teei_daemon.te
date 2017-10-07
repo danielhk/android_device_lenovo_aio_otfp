@@ -7,7 +7,7 @@ typeattribute teei_client_device mlstrustedobject;
 
 allow teei_daemon self:capability sys_module;
 allow teei_daemon teei_config_device:chr_file rw_file_perms;
-allow teei_daemon teei_client_device:chr_file create_file_perms;
+#allow teei_daemon teei_client_device:chr_file create_file_perms;
 allow teei_daemon teei_vfs_device:chr_file rw_file_perms;
 allow teei_daemon teei_rpmb_device:chr_file rw_file_perms;
 allow teei_daemon teei_data_file:dir create_dir_perms;

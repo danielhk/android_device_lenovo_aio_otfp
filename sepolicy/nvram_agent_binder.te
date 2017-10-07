@@ -52,13 +52,13 @@ allow nvram_agent_binder nvdata_file:file create_file_perms;
 allow nvram_agent_binder system_file:file execute_no_trans;
 
 allow nvram_agent_binder als_ps_device:chr_file { read ioctl open };
-allow nvram_agent_binder mtk-adc-cali_device:chr_file { read write ioctl open };
+allow nvram_agent_binder mtk_adc_cali_device:chr_file { read write ioctl open };
 allow nvram_agent_binder gsensor_device:chr_file { read ioctl open };
 allow nvram_agent_binder gyroscope_device:chr_file { read ioctl open };
 allow nvram_agent_binder init:unix_stream_socket connectto;
 allow nvram_agent_binder property_socket:sock_file write;
 allow nvram_agent_binder sysfs:file write;
-allow nvram_agent_binder system_data_file:file { write open setattr create };
+#allow nvram_agent_binder system_data_file:file { write open setattr create };
 allow nvram_agent_binder self:capability { fowner chown dac_override fsetid };
 allow nvram_agent_binder system_data_file:dir { create write add_name };
 

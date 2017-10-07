@@ -69,7 +69,7 @@ allow mdlogger vfat:file create_file_perms;
 #=========================================================
 #modem logger permission in storage in android M version
 #=========================================================
-allow mdlogger log_device:chr_file w_file_perms;
+#allow mdlogger log_device:chr_file w_file_perms;
 allow mdlogger tmpfs:lnk_file read;
 #allow mdlogger storage_file:dir search;
 allow mdlogger storage_file:lnk_file rw_file_perms;

@@ -25,7 +25,7 @@ allow installd custom_file:dir search;
 # Date : WK14.34
 # Operation : Development GMO Feature "Move OAT to SD Card"
 # Purpose : for GMO ROM Size Slim
-allow installd dalvikcache_data_file:lnk_file { read getattr setattr unlink create };
+#allow installd dalvikcache_data_file:lnk_file { read getattr setattr unlink create };
 allow installd fuse:dir { write read remove_name search create add_name getattr setattr };
 allow installd fuse:file { write getattr setattr read create unlink open };
 
@@ -54,7 +54,7 @@ allow installd platform_app:fd use;
 # Date : WK15.03
 # Operation : SQC1
 # Purpose : ALPS01911340 (MTK MTBF for GMO project)
-allow installd platform_app_tmpfs:file { open read write getattr };
+#allow installd platform_app_tmpfs:file { open read write getattr };
 
 # Date : WK15.32
 # Operation : Migration
@@ -65,3 +65,7 @@ userdebug_or_eng(`
 
 # Nougat
 allow installd mobicore_data_file:dir { r_file_perms write remove_name rmdir };
+
+# O
+allow installd system_data_file:lnk_file { getattr };
+

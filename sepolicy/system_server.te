@@ -43,13 +43,13 @@ allow system_server mnld:unix_dgram_socket sendto;
 # Date : WK14.34
 # Operation : Migration
 # Purpose : for debug
-allow system_server debuggerd:fd use;
+#allow system_server debuggerd:fd use;
 allow system_server mnld_data_file:sock_file create_file_perms;
 allow system_server mnld_data_file:sock_file rw_file_perms;
 allow system_server mnld_data_file:dir create_file_perms;
 allow system_server mnld_data_file:dir rw_dir_perms;
-allow system_server gps_data_file:file create_file_perms;
-allow system_server gps_data_file:dir rw_dir_perms;
+#allow system_server gps_data_file:file create_file_perms;
+#allow system_server gps_data_file:dir rw_dir_perms;
 
 # Date : WK14.37
 # Operation : Migration
@@ -65,7 +65,7 @@ allow system_server anr_data_file:file relabelto;
 # Date : WK14.38
 # Operation : Migration
 # Purpose : for debug
-allow system_server debuggerd:binder call;
+#allow system_server debuggerd:binder call;
 allow system_server resmon:fd use;
 allow system_server resmon:fifo_file write;
 
@@ -272,4 +272,7 @@ allow system_server debugfs:dir { read open };
 allow system_server unlabeled:file unlink;
 allow system_server wmt_prop:file { read open getattr };
 allow system_server wifi_data_file:sock_file { unlink };
+
+# Nougat
+allow system_server dalvikcache_data_file:file execute;
 

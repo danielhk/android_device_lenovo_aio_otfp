@@ -18,8 +18,8 @@ allow adbd graphics_device:chr_file { read ioctl open };
 # Date : WK14.27
 # Operation : KK.AOSP SQC
 # Purpose : A process wants to access a specific path. For example : shell:ls -l /data/data/
-allow adbd platform_app_data_file:dir { write getattr add_name };
-allow adbd platform_app_data_file:file { read create open };
+#allow adbd platform_app_data_file:dir { write getattr add_name };
+#allow adbd platform_app_data_file:file { read create open };
 allow adbd radio_data_file:file { read open };
 
 # Date : WK14.27

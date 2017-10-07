@@ -30,7 +30,7 @@ allow mobile_log_d kernel:system syslog_mod;
 allow mobile_log_d sdcard_internal:dir create_dir_perms;
 allow mobile_log_d sdcard_internal:file create_file_perms;
 allow mobile_log_d platform_app:fd use;
-allow mobile_log_d platform_app_tmpfs:file write;
+#allow mobile_log_d platform_app_tmpfs:file write;
 #allow mobile_log_d unlabeled:lnk_file read;
 
 #GMO project
@@ -81,7 +81,7 @@ allow mobile_log_d data_tmpfs_log_file:file create_file_perms;
 # Date : WK15.29
 # Operation : Migration
 # Purpose : for device bring up, not to block early migration
-allow mobile_log_d log_device:chr_file r_file_perms;
+#allow mobile_log_d log_device:chr_file r_file_perms;
 allow mobile_log_d storage_file:dir create_dir_perms;
 allow mobile_log_d storage_file:file create_file_perms;
 allow mobile_log_d storage_file:lnk_file create_file_perms;

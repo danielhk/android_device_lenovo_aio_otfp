@@ -53,7 +53,7 @@ allow nvram_daemon system_file:file execute_no_trans;
 
 # Date : WK14.43
 allow nvram_daemon als_ps_device:chr_file { read ioctl open };
-allow nvram_daemon mtk-adc-cali_device:chr_file { read write ioctl open };
+allow nvram_daemon mtk_adc_cali_device:chr_file { read write ioctl open };
 allow nvram_daemon gsensor_device:chr_file { read ioctl open };
 allow nvram_daemon gyroscope_device:chr_file { read ioctl open };
 allow nvram_daemon init:unix_stream_socket connectto;
@@ -61,9 +61,9 @@ allow nvram_daemon init:unix_stream_socket connectto;
 # Purpose: for property set
 allow nvram_daemon property_socket:sock_file write;
 #allow nvram_daemon sysfs:file write;
-allow nvram_daemon system_data_file:file { read write open getattr setattr create };
+#allow nvram_daemon system_data_file:file { read write open getattr setattr create };
 allow nvram_daemon self:capability { fowner chown dac_override fsetid };
-allow nvram_daemon system_data_file:dir { create write add_name };
+#allow nvram_daemon system_data_file:dir { create write add_name };
 
 # Purpose: for backup
 allow nvram_daemon nvram_device:chr_file {read write open ioctl};
@@ -88,6 +88,9 @@ allow nvram_daemon sysfs:file { write read open };
 allow nvram_daemon rootfs:dir { read open };
 allow nvram_daemon rootfs:file r_file_perms;
 allow nvram_daemon toolbox_exec:file { r_file_perms execute execute_no_trans };
-allow nvram_daemon default_prop:property_service set;
+#allow nvram_daemon default_prop:property_service set;
 allow nvram_daemon rootfs:lnk_file { getattr };
+
+# O
+#allow nvram_daemon sysfs:file { write read open };
 

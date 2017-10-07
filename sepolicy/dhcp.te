@@ -21,7 +21,7 @@ allow dhcp kernel:system module_request;
 # Purpose: ALPS01798575 
 #============= netd ==============
 allow dhcp platform_app:fd use;
-allow dhcp platform_app_tmpfs:file write;
+#allow dhcp platform_app_tmpfs:file write;
 
 #============= dhcp ==============
 allow dhcp init:fifo_file { read write };

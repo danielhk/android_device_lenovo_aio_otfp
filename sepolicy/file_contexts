@@ -16,7 +16,7 @@
 #
 /data/aee_exp(/.*)?  u:object_r:aee_exp_data_file:s0
 /data/agps_supl(/.*)?    u:object_r:agpsd_data_file:s0
-/data/misc/gps(/.*)?   u:object_r:gps_data_file:s0
+#/data/misc/gps(/.*)?   u:object_r:gps_data_file:s0
 /data/anr/SF_RTT(/.*)? u:object_r:sf_rtt_file:s0
 /data/app/mcRegistry(/.*)? u:object_r:mobicore_data_file:s0
 /data/ccci_cfg(/.*)? u:object_r:ccci_cfg_file:s0
@@ -110,7 +110,7 @@
 /dev/fat(/.*)? u:object_r:fat_device:s0
 /dev/FM50AF(/.*)? u:object_r:FM50AF_device:s0
 /dev/fm(/.*)? u:object_r:fm_device:s0
-/dev/gps(/.*)? u:object_r:gps_device:s0
+#/dev/gps(/.*)? u:object_r:gps_device:s0
 /dev/gsensor(/.*)? u:object_r:gsensor_device:s0
 /dev/gyroscope(/.*)? u:object_r:gyroscope_device:s0
 /dev/hdmitx(/.*)? u:object_r:graphics_device:s0
@@ -156,7 +156,7 @@
 /dev/mt9p012(/.*)? u:object_r:mt9p012_device:s0
 /dev/mtfreqhopping(/.*)? u:object_r:mtfreqhopping_device:s0
 /dev/mtgpio(/.*)? u:object_r:mtgpio_device:s0
-/dev/mtk-adc-cali(/.*)? u:object_r:mtk-adc-cali_device:s0
+/dev/mtk-adc-cali(/.*)? u:object_r:mtk_adc_cali_device:s0
 /dev/mtk_disp.* u:object_r:graphics_device:s0
 /dev/mtkfb_vsync(/.*)? u:object_r:graphics_device:s0
 /dev/mtkg2d(/.*)? u:object_r:mtkg2d_device:s0
@@ -209,7 +209,7 @@
 /dev/socket/dfo(/.*)? u:object_r:dfo_socket:s0
 /dev/socket/dnsproxyd(/.*)? u:object_r:dnsproxyd_socket:s0
 /dev/socket/dumpstate(/.*)? u:object_r:dumpstate_socket:s0
-/dev/socket/installd(/.*)? u:object_r:installd_socket:s0
+#/dev/socket/installd(/.*)? u:object_r:installd_socket:s0
 /dev/socket/mdnsd(/.*)? u:object_r:mdnsd_socket:s0
 /dev/socket/mdns(/.*)? u:object_r:mdns_socket:s0
 /dev/socket/mnld(/.*)? u:object_r:mnld_socket:s0
@@ -466,7 +466,7 @@
 /system/bin/thermal u:object_r:thermal_exec:s0
 /system/bin/tiny_mkswap u:object_r:tiny_mkswap_exec:s0
 /system/bin/tiny_swapon u:object_r:tiny_swapon_exec:s0
-/system/bin/tune2fs u:object_r:tune2fs_exec:s0
+#/system/bin/tune2fs u:object_r:tune2fs_exec:s0
 /system/bin/viarild u:object_r:viarild_exec:s0
 /system/bin/volte_imcb u:object_r:volte_imcb_exec:s0
 /system/bin/volte_stack u:object_r:volte_stack_exec:s0

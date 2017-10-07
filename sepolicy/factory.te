@@ -55,7 +55,7 @@ allow factory mtk_kpd_device:chr_file { read ioctl open };
 allow factory ebc_device:chr_file { read write open };
 allow factory fm_device:chr_file { read write ioctl open };
 allow factory fuse:dir { read search open };
-allow factory gps_device:chr_file { read write open };
+#allow factory gps_device:chr_file { read write open };
 allow factory graphics_device:chr_file { read write ioctl open };
 allow factory gsensor_device:chr_file { read ioctl open };
 allow factory gsm0710muxd_device:chr_file { read write ioctl open };

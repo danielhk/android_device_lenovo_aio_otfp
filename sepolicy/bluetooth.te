@@ -16,7 +16,7 @@ allow bluetooth block_device:dir search;
 allow bluetooth proc_secmem:file { read open };
 
 # Temp FS access
-allow bluetooth platform_app_tmpfs:file write;
+#allow bluetooth platform_app_tmpfs:file write;
 
 # Date : WK15.36
 # Operation : Migration
@@ -27,3 +27,7 @@ allow bluetooth surfaceflinger:fifo_file { read write };
 # Operation: Program binary service
 # Purpose : Add permission for program binary service find from ServiceManager.
 allow bluetooth program_binary_service:service_manager find;
+
+# 2017/7/22: daniel_hk(danielhk@github.com)
+# O
+allow bluetooth wmt_prop:file { getattr open };

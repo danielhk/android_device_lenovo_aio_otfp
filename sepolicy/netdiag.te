@@ -32,7 +32,7 @@ init_daemon_domain(netdiag)
 allow netdiag shell_exec:file execute_no_trans;
 allow netdiag sdcard_internal:dir { write search read create open add_name };
 allow netdiag sdcard_internal:file { write create open getattr };
-allow netdiag self:packet_socket { write ioctl setopt read getopt create };
+#allow netdiag self:packet_socket { write ioctl setopt read getopt create };
 allow netdiag fuse:dir { remove_name write search read remove_name open add_name create};
 allow netdiag fuse:file { rename write getattr read create open unlink};
 

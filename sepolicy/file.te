@@ -199,8 +199,11 @@ type adbd_data_file, file_type, data_file_type;
 type autokd_data_file, file_type, data_file_type;
 
 #fuse
-typealias fuse alias sdcard_internal;
-typealias vfat alias sdcard_external;
+type fuseblk, sdcard_type, fs_type, mlstrustedobject;
+#typealias fuse alias sdcard_internal;
+type sdcard_internal, sdcard_type, fs_type, mlstrustedobject;
+#typealias vfat alias sdcard_external;
+type sdcard_external, sdcard_type, fs_type, mlstrustedobject;
 
 # debuggerd mrdump allocfile
 #type debuggerd_data_file, file_type, data_file_type;

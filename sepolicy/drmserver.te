@@ -72,7 +72,7 @@ allow drmserver proc_secmem:file { read write ioctl open };
 # Date : WK15.07
 # Operation : DRM SQC
 # Purpose : For gmo project, low memory kill
-allow drmserver platform_app_tmpfs:file write;
+#allow drmserver platform_app_tmpfs:file write;
 
 # Date : WK15.15
 # Operation : GMS APP SQC

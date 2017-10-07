@@ -38,7 +38,7 @@ allow tunman system_data_file:file { open read };
 # TUN management
 allow tunman self:capability { net_admin net_raw dac_override };
 allow tunman tun_device:chr_file rw_file_perms;
-allow tunman self:tun_socket create_socket_perms;
+#allow tunman self:tun_socket create_socket_perms;
 
 # Allows Max to use the fd received from Tunman
 allow appdomain tunman:fd use;

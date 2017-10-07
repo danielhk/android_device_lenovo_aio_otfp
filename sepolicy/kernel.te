@@ -30,7 +30,7 @@ allow kernel nvram_device:blk_file { open read write };
 allow kernel nvdata_file:dir search;
 allow kernel nvdata_file:file r_file_perms;
 allow kernel wifi_data_file:dir search;
-allow kernel self:capability { dac_read_search dac_override };
+#allow kernel self:capability { dac_read_search dac_override };
 
 # Date : WK15.33
 # Operation : Migration
@@ -53,4 +53,7 @@ allow kernel nvram_data_file:lnk_file read;
 # Operation : Migration
 # Purpose : grant proc_thermal for dir search
 allow kernel proc_thermal:dir search;
+
+# 2017/7/22: daniel_hk(danielhk@github.com)
+# O
 

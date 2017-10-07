@@ -2,4 +2,13 @@
 # MTK Policy Rule
 # ============
 
+allow rild ccci_device:chr_file { read write ioctl open };
+allow rild devpts:chr_file { read write ioctl open };
+
+allow rild ril_active_md_prop:property_service set;
+allow rild ril_mux_report_case_prop:property_service set;
+allow rild ctl_muxreport-daemon_prop:property_service set;
+
+allow rild gsm0710muxd_prop:file { read open getattr };
+allow rild ril_mux_report_case_prop:file { read open getattr };
 

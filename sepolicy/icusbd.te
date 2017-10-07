@@ -30,6 +30,6 @@ allow icusbd ccci_device:chr_file { read write ioctl open };
 allow icusbd proc_icusb:file { read write open };
 allow icusbd proc_icusb:dir search; 
 allow icusbd self:capability dac_override;
-allow icusbd self:netlink_socket create_socket_perms;
+#allow icusbd self:netlink_socket create_socket_perms;
 allow icusbd usb_device:chr_file { read write ioctl open };
 allow icusbd usb_device:dir { read open search};

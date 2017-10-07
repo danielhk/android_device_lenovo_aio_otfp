@@ -10,7 +10,7 @@ allow ueventd sysfs:file setattr;
 
 #add for gmo+512M project
 allow ueventd platform_app:fd use;
-allow ueventd platform_app_tmpfs:file write;
+#allow ueventd platform_app_tmpfs:file write;
 
 #add for sysfs:md32
 allow ueventd sysfs_md32:file { write open };
@@ -18,10 +18,4 @@ allow ueventd sysfs_md32:file { write open };
 # Nougat
 allow ueventd device:chr_file { relabelfrom };
 allow ueventd fm_device:chr_file { relabelto };
-
-allow ueventd null_device:chr_file { read write };
-allow ueventd init:fd use;
-allow ueventd property_contexts:file { getattr read open };
-allow ueventd properties_serial:file { getattr read open };
-allow ueventd selinuxfs:filesystem getattr;
 

@@ -54,18 +54,18 @@ auditallow mtkrild system_radio_prop:property_service set;
 allow mtkrild ril_cdma_report_prop:property_service set;
 
 # Read/Write to uart driver (for GPS)
-allow mtkrild gps_device:chr_file rw_file_perms;
+#allow mtkrild gps_device:chr_file rw_file_perms;
 
 allow mtkrild tty_device:chr_file rw_file_perms;
 
 # Allow mtkrild to create and use netlink sockets.
-allow mtkrild self:netlink_socket create_socket_perms;
-allow mtkrild self:netlink_kobject_uevent_socket create_socket_perms;
+#allow mtkrild self:netlink_socket create_socket_perms;
+#allow mtkrild self:netlink_kobject_uevent_socket create_socket_perms;
 
 # Access to wake locks
 wakelock_use(mtkrild)
 
-allow mtkrild self:socket create_socket_perms;
+#allow mtkrild self:socket create_socket_perms;
 allow mtkrild Vcodec_device:chr_file { read write open };
 allow mtkrild devmap_device:chr_file { read ioctl open };
 allow mtkrild devpts:chr_file { read write open };
@@ -85,7 +85,7 @@ allow mtkrild block_device:dir search;
 #allow mtkrild platformblk_device:dir search;
 allow mtkrild platform_app:fd use;
 allow mtkrild radio:fd use;
-allow mtkrild radio_tmpfs:file write;
+#allow mtkrild radio_tmpfs:file write;
 allow mtkrild mmcblk0_block_device:blk_file { read write open };
 
 # For emulator
@@ -103,5 +103,5 @@ allow mtkrild proc:file { open read write };
 allow mtkrild ril_mux_report_case_prop:file { read open getattr };
 allow mtkrild sysfs:file { read open };
 allow mtkrild rootfs:lnk_file { getattr };
-allow mtkrild volte_prop:file { read open getattr };
+allow mtkrild volte_prop:file { open read getattr };
 

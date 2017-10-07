@@ -18,7 +18,7 @@ init_daemon_domain(program_binary)
 # Purpose : Cache program binaries for HWUI usage
 binder_service(program_binary)
 binder_use(program_binary)
-binder_call({domain -init}, program_binary)
+#binder_call({domain -init}, program_binary)
 
 # Date : 2015/1/6
 # Operation : New

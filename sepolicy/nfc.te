@@ -103,7 +103,7 @@ allow nfc init:unix_stream_socket { write read setopt };
 # Date      : 2015/03/11
 # Operation : SQC
 # Purpose   : For platform_app_tmpfs
-allow nfc platform_app_tmpfs:file write;
+#allow nfc platform_app_tmpfs:file write;
 
 
 # allow nfc init_tmpfs:file read;

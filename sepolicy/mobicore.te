@@ -28,7 +28,7 @@ allow mobicore mobicore_admin_device:chr_file rw_file_perms;
 allow mobicore mobicore_user_device:chr_file rw_file_perms;
 allow mobicore mobicore_data_file:dir rw_dir_perms;
 allow mobicore mobicore_data_file:file create_file_perms;
-allow mobicore self:netlink_socket create_socket_perms;
+#allow mobicore self:netlink_socket create_socket_perms;
 allow mobicore apk_data_file:dir write;
 allow mobicore mobicore_data_file:dir create;
 allow mobicore mobicore_data_file:file rw_file_perms;

@@ -20,8 +20,8 @@ init_daemon_domain(dmlog)
 # Operation : Migration 
 # Purpose : for mtk debug mechanism
 allow dmlog aed_device:chr_file read;
-allow dmlog debuggerd:fd use;
-allow dmlog debuggerd:unix_stream_socket { read write };
+#allow dmlog debuggerd:fd use;
+#allow dmlog debuggerd:unix_stream_socket { read write };
 allow dmlog expdb_device:chr_file { read write };
 allow dmlog fuse:file { write getattr };
 allow dmlog sysfs:file write;

@@ -3,7 +3,7 @@ allow cameraserver CAM_CAL_DRV_device:chr_file { read write open ioctl };
 allow cameraserver camera_isp_device:chr_file { read write open ioctl };
 allow cameraserver camera_fdvt_device:chr_file { read write open ioctl };
 #allow cameraserver default_prop:property_service { set };	** need to change system/sepolicy, later **
-allow cameraserver device:chr_file { read write open ioctl };
+#allow cameraserver device:chr_file { read write open ioctl };
 allow cameraserver devmap_device:chr_file { read write open ioctl };
 allow cameraserver init:unix_stream_socket { connectto };
 allow cameraserver kd_camera_hw_device:chr_file { read write open ioctl };

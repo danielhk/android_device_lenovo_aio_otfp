@@ -7,9 +7,9 @@ net_domain(usbdongled)
 allow usbdongled self:capability { net_admin net_raw dac_override kill };
 
 # Allow ril-3gddaemon to create and use netlink sockets.
-allow usbdongled self:netlink_socket create_socket_perms;
-allow usbdongled self:netlink_kobject_uevent_socket create_socket_perms;
-allow usbdongled self:netlink_nflog_socket create_socket_perms;
+#allow usbdongled self:netlink_socket create_socket_perms;
+#allow usbdongled self:netlink_kobject_uevent_socket create_socket_perms;
+#allow usbdongled self:netlink_nflog_socket create_socket_perms;
 allow usbdongled netdomain:{tcp_socket udp_socket rawip_socket dccp_socket tun_socket} {read write getattr setattr getopt setopt};
 allow usbdongled netdomain:fd use;
 

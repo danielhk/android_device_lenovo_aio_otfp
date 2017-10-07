@@ -65,15 +65,15 @@ allow mtkmal self:netlink_route_socket { write nlmsg_write read bind create nlms
 allow mtkmal device:lnk_file create;
 
 #for RAN access wpa
-unix_socket_send(mtkmal, wpa, wpa)
+#unix_socket_send(mtkmal, wpa, wpa)
 allow mtkmal wpa_socket:dir rw_dir_perms;
 allow mtkmal wpa_socket:sock_file create_file_perms;
 allow mtkmal wifi_data_file:dir create_dir_perms;
 allow mtkmal wifi_data_file:file create_file_perms;
-allow mtkmal wpa:unix_dgram_socket sendto;
-allow wpa mtkmal:unix_stream_socket connectto;
-allow wpa mtkmal:unix_dgram_socket sendto;
-allow wpa init:unix_dgram_socket sendto;
+#allow mtkmal wpa:unix_dgram_socket sendto;
+#allow wpa mtkmal:unix_stream_socket connectto;
+#allow wpa mtkmal:unix_dgram_socket sendto;
+#allow wpa init:unix_dgram_socket sendto;
 
 #for timer
 allow mtkmal self:capability2 wake_alarm;

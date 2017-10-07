@@ -55,7 +55,7 @@ allow enableswap self:capability dac_override;
 # Date : WK15.30
 # Operation : Migration
 # Purpose : Allow more operations on init_tmpfs
-allow enableswap init_tmpfs:file { open write };
+#allow enableswap init_tmpfs:file { open write };
 
 # Nougat
 allow enableswap shell_exec:file { entrypoint read getattr };

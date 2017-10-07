@@ -109,6 +109,6 @@ allow ccci_mdinit proc:file { read open ioctl };
 allow ccci_mdinit persist_ril_prop:file { read open getattr };
 allow ccci_mdinit mediatek_prop:file { read open getattr ioctl };
 allow ccci_mdinit mtk_md_prop:file { read open getattr ioctl };
-allow ccci_mdinit block_device:blk_file r_file_perms;
+#allow ccci_mdinit block_device:blk_file r_file_perms;
 allow ccci_mdinit rootfs:lnk_file { getattr };
 

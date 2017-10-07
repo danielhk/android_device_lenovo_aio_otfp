@@ -138,7 +138,7 @@ allow system_app qemu_pipe_device:chr_file rw_file_perms;
 # Operation: SQC
 # Purpose : [Settings][Battery module will call batterystats API, and it will read /sys/kernel/debug/wakeup_sources]
 # Package: com.android.settings
-allow system_app debugfs:file r_file_perms;
+#allow system_app debugfs:file r_file_perms;
 
 # Date : 2014/11/18
 # Operation : SQC
@@ -161,19 +161,19 @@ binder_call(system_app, MtkCodecService)
 # Operation: SQC
 # Purpose: [Settings][Browser][warning kernel API'selinux enforce violation:sdcardd' when do stress test with ' AT_ST_Browser_Test.rar']
 # Package: com.android.settings
-allow system_app platform_app_tmpfs:file write;
+#allow system_app platform_app_tmpfs:file write;
 
 # Date : 2015/01/13
 # Operation: SQC
 # Purpose: access ashmem of isolated_app
 # Package: com.fw.upgrade.sysoper
-dontaudit system_app isolated_app_tmpfs:file write;
+#dontaudit system_app isolated_app_tmpfs:file write;
 
 # Date : 2015/01/14
 # Operation: SQC
 # Purpose: access ashmem of untrusted_app
 # Package: android.ui
-dontaudit system_app untrusted_app_tmpfs:file write;
+#dontaudit system_app untrusted_app_tmpfs:file write;
 
 # Date : 2015/01/27
 # Operation: SQC
