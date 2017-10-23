@@ -51,8 +51,6 @@ on fs
     exec /system/bin/tune2fs -O has_journal -u 10010 -r 4096 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata
     write /proc/bootprof "INIT:Mount_END"
 
-    mount iso9660 loop@/system/etc/iAmCdRom.iso /mnt/cd-rom ro
-
 on post-fs
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
@@ -1287,3 +1285,7 @@ service custom_sn /system/bin/custom_sn
     class main
     oneshot
 #lenovo-sw jixj 2014.1.3 add end 
+
+on property:ro.mount.helpercd=1
+    mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
+
