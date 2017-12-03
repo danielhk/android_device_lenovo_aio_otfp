@@ -1,0 +1,70 @@
+diff --git a/media/libaudiohal/Android.mk b/media/libaudiohal/Android.mk
+index e592169..7439958 100644
+--- a/media/libaudiohal/Android.mk
++++ b/media/libaudiohal/Android.mk
+@@ -16,6 +16,10 @@ LOCAL_SRC_FILES := \
+ 
+ LOCAL_CFLAGS := -Wall -Werror
+ 
++ifeq ($(BOARD_USES_LEGACY_MTK_AV_BLOB), true)
++    LOCAL_CFLAGS += -DLEGACY_MTK_AV_BLOB
++endif
++
+ ifeq ($(USE_LEGACY_LOCAL_AUDIO_HAL), true)
+ 
+ # Use audiohal directly w/o hwbinder middleware.
+diff --git a/media/libaudiohal/DeviceHalLocal.cpp b/media/libaudiohal/DeviceHalLocal.cpp
+index fc098f5..c240be9 100644
+--- a/media/libaudiohal/DeviceHalLocal.cpp
++++ b/media/libaudiohal/DeviceHalLocal.cpp
+@@ -137,8 +137,21 @@ status_t DeviceHalLocal::openInputStream(
+             handle, devices, flags,
+             config->sample_rate, config->format, config->channel_mask,
+             address, source);
++#ifdef LEGACY_MTK_AV_BLOB
++    halStream = (audio_stream_in_t *)calloc(1, sizeof(audio_stream_in_t));
++    int openResult = mDev->open_input_stream(
++            mDev, handle, devices, config, &mIn, flags, address, source);
++    memcpy(halStream, mIn, sizeof(legacy_audio_stream_in_t));
++    halStream->get_capture_position = NULL;
++    halStream->start = NULL;
++    halStream->stop = NULL;
++    halStream->create_mmap_buffer = NULL;
++    halStream->get_mmap_position = NULL;
++#else
+     int openResult = mDev->open_input_stream(
+             mDev, handle, devices, config, &halStream, flags, address, source);
++#endif
++
+     if (openResult == OK) {
+         *inStream = new StreamInHalLocal(halStream, this);
+     }
+@@ -193,7 +206,12 @@ void DeviceHalLocal::closeOutputStream(struct audio_stream_out *stream_out) {
+ }
+ 
+ void DeviceHalLocal::closeInputStream(struct audio_stream_in *stream_in) {
++#ifdef LEGACY_MTK_AV_BLOB
++    mDev->close_input_stream(mDev, mIn);
++    free(stream_in);
++#else
+     mDev->close_input_stream(mDev, stream_in);
++#endif
+ }
+ 
+ } // namespace android
+diff --git a/media/libaudiohal/DeviceHalLocal.h b/media/libaudiohal/DeviceHalLocal.h
+index 865f296..6cc5601 100644
+--- a/media/libaudiohal/DeviceHalLocal.h
++++ b/media/libaudiohal/DeviceHalLocal.h
+@@ -107,7 +107,9 @@ class DeviceHalLocal : public DeviceHalInterface
+ 
+   private:
+     audio_hw_device_t *mDev;
+-
++#ifdef LEGACY_MTK_AV_BLOB
++    audio_stream_in_t *mIn;
++#endif
+     friend class DevicesFactoryHalLocal;
+ 
+     // Can not be constructed directly by clients.
+
