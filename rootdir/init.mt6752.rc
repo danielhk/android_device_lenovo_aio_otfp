@@ -1233,10 +1233,6 @@ service guiext-server /system/bin/guiext-server
     user root
     group system graphics media
 
-#service kpoc_charger /system/bin/kpoc_charger
-#    class charger
-#    user root
-
 service battery_charger /charger
     class charger
     user root
