@@ -246,7 +246,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # extra log controls prop
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.ril.log=0 \
     ro.disable.xlog=0
 
 # GPS force mode
