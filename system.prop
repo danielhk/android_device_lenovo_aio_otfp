@@ -26,7 +26,7 @@ wifi.interface=wlan0
 wifi.direct.interface=p2p0
 
 # Graphic
-debug.hwui.profile=true
+debug.hwui.render_dirty_regions=false
 drm.service.enabled=true
 persist.sys.lcd_density=480
 ro.opengles.version=196609
@@ -103,4 +103,4 @@ ro.mtk_cam_vfb=1
 ro.mtk_matv_analog_support=1
 ro.mtk_wapi_support=1
 ro.mtk_wappush_support=1
-
+bluetooth.enable_timeout_ms=12000
