@@ -1287,5 +1287,5 @@ service custom_sn /system/bin/custom_sn
 #lenovo-sw jixj 2014.1.3 add end 
 
 on property:ro.mount.helpercd=1
-    mount iso9660 loop@/vendor/etc/iAmCdRom.iso /mnt/cd-rom ro
-
+    # installer cdrom
+    mount iso9660 loop@/system/etc/cdrom_install.iso /mnt/cd-rom ro
