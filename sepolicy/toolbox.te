@@ -29,6 +29,6 @@ allow toolbox tmpfs:dir { write rmdir setattr remove_name create add_name };
 #allow toolbox toolbox_tmpfs:file { create open setattr};
 
 # Nougat
-#allow toolbox self:capability { chown mknod };
+#allow toolbox self:capability { chown mknod dac_override };
 allow toolbox device:dir { write add_name };
 allow toolbox device:chr_file { create };
