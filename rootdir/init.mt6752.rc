@@ -875,9 +875,9 @@ service audio-daemon /system/bin/audiocmdservice_atci
     oneshot
 
 service pq /system/bin/pq
-    class main
-    user system
-    group system graphics
+    class core
+    user root
+    group system graphics media camera
 
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
