@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# 20171001 - Oero port - daniel_hk (danielhk@github.com)
+# 20171001 - Oreo port - daniel_hk (danielhk@github.com)
 
 # call the proprietary setup
 $(call inherit-product, vendor/lenovo/aio_otfp/aio_otfp-vendor.mk)
@@ -135,6 +135,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl \
     android.hardware.bluetooth@1.0-service \
+    libbluetooth_mtk \
     libbt-vendor
 
 # Camera HAL
