@@ -242,8 +242,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \
-    persist.sys.root_access=0 \
-    ro.sys.fw.bg_apps_limits=5
+    persist.sys.root_access=0
 
 # extra log controls prop
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -255,5 +254,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.force.gps.mode=gnss
 
 # Dalvik & hwui defaults
-$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-flags=--no-watch-dog \
+    dalvik.vm.dex2oat-swap=false \
+    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=192m \
+    dalvik.vm.heapsize=256m \
+    dalvik.vm.heaptargetutilization=0.75 \
+    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapmaxfree=8m
+
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
