@@ -230,7 +230,6 @@ DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 # default.prop
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
-    ro.secure=0 \
     camera.disable_zsl_mode=1 \
     dalvik.vm.dex2oat-Xms=64m \
     dalvik.vm.dex2oat-Xmx=512m \
