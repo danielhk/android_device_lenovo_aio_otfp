@@ -127,7 +127,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     libemoji \
-    libnl_2
+    libnl_2 \
+    messaging
 
 # MTK Helpers
 PRODUCT_PACKAGES += \
