@@ -86,7 +86,6 @@ TARGET_HAS_EARLYSUSPEND := true
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp,aio_otfp_m,K3Note
-TARGET_CUSTOM_BINARY := device/lenovo/aio_otfp/configs/updater
 
 # recovery
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
@@ -95,10 +94,7 @@ BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
-BOARD_USES_FULL_RECOVERY_IMAGE := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
-TARGET_PREBUILT_RECOVERY_KERNEL := $(LOCAL_PATH)/kernel
-TARGET_RECOVERY_DENSITY := xxhdpi
 
 # TWRP
 HAVE_SELINUX := true
@@ -121,8 +117,6 @@ TARGET_CPU_MEMCPY_OPT_DISABLE := true
 # MTK Hardware
 BOARD_USES_MTK_HARDWARE := true
 BOARD_USES_LEGACY_MTK_AV_BLOB := true
-BOARD_USES_MTK_AUDIO := true
-TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_CAMERA_STUB := true
 BOARD_PROVIDES_RILD := true
 BOARD_USE_SOFT_GATEKEEPER := true
