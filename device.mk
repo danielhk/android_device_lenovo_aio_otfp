@@ -246,6 +246,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # build.prop
 PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false \
     persist.service.adb.enable=1 \
     persist.service.debuggable=1 \
     persist.sys.root_access=0
