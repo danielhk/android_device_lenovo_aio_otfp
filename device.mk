@@ -132,6 +132,7 @@ PRODUCT_PACKAGES += \
 
 # MTK Helpers
 PRODUCT_PACKAGES += \
+    libcam.client \
     libion \
     libwvmsym \
     libiodev
