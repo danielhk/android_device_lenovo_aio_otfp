@@ -82,6 +82,7 @@ TARGET_KERNEL_SOURCE := kernel/lenovo/aio_otfp
 TARGET_MTK_KERNEL := true
 endif
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/bootimg/bootimg.mk
+TARGET_HAS_EARLYSUSPEND := true
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := K50-t5,aio_otfp,aio_otfp_m,K3Note
